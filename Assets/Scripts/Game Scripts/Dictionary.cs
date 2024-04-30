@@ -27,9 +27,11 @@ public class Dictionary : MonoBehaviour
     public TextMeshProUGUI timerText; // Reference to the UI Text component for displaying the timer
 
     // SFX
+    /*
     [Header("SFX")]
     public ParticleSystem correctButtonPreFab;
     public ParticleSystem wrongButtonPreFab;
+    */
     
     // Screen Shake
     [Header("Camera")]
@@ -185,8 +187,8 @@ public class Dictionary : MonoBehaviour
                 AudioManager.Instance.PlayCorrectMatchSound();
                 
                 // Play particle effect for correct match on each button
-                PlayCorrectMatchParticleEffect(flippedButtons[0].transform.position);
-                PlayCorrectMatchParticleEffect(flippedButtons[1].transform.position);
+                //PlayCorrectMatchParticleEffect(flippedButtons[0].transform.position);
+                //PlayCorrectMatchParticleEffect(flippedButtons[1].transform.position);
                 
                 // Handle match made
                 HandleMatchMade();
@@ -289,6 +291,7 @@ public class Dictionary : MonoBehaviour
     }
     
     // Particle Effects
+    /*
     private void PlayCorrectMatchParticleEffect(Vector3 position)
     {
         // Instantiate the particle effect prefab at the specified position
@@ -301,6 +304,7 @@ public class Dictionary : MonoBehaviour
         // Destroy the particle effect object after its duration
         Destroy(particleEffect.gameObject, particleEffect.main.duration);
     }
+    */
 
     private void RestartGame()
     {
