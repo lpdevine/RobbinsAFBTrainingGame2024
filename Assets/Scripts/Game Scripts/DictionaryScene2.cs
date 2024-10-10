@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -14,8 +15,8 @@ public class DictionaryScene2 : MonoBehaviour
 
     // Game Control Variables
     private bool isPaused = false;
-    private int wrongGuesses = 5;
-    private float timerDuration = 60f; // Timer duration in seconds
+    private int wrongGuesses = 10;
+    private float timerDuration = 140f; // Timer duration in seconds
     private float timer; // Current timer value
     private bool isTimerRunning = false;
     private int correctMatches = 0; // Track the number of correct matches made
@@ -169,26 +170,28 @@ public class DictionaryScene2 : MonoBehaviour
                 (termsDefinitions.ContainsKey(text2) && termsDefinitions[text2] == text1))
             {
                 Debug.Log("Match found!");
-                // Disable further interactions with matched buttons
-                flippedButtons[0].interactable = false;
-                flippedButtons[1].interactable = false;
-                
-                // Play sound for correct match using AudioManager
-                AudioManager.Instance.PlayCorrectMatchSound();
+
+                // Change button color to light green for correct match
+                SetButtonColor(flippedButtons[0], true);
+                SetButtonColor(flippedButtons[1], true);
+
+                // Disable further interactions with matched buttons after a short delay
+                StartCoroutine(DisableMatchedButtonsDelayed(flippedButtons[0], flippedButtons[1]));
 
                 // Handle match made
                 HandleMatchMade();
             }
             else
             {
+                // Change button color to light red for incorrect match
+                SetButtonColor(flippedButtons[0], false);
+                SetButtonColor(flippedButtons[1], false);
+
                 // If there is no match, start coroutine to hide button text after delay
                 StartCoroutine(HideButtonsDelayed());
-                
-                // Decrease the number of guesses a player has.
+
+                // Decrease the number of guesses a player has
                 DecreaseWrongGuessCount();
-                
-                // Play sound for incorrect match using AudioManager
-                AudioManager.Instance.PlayIncorrectMatchSound();
             }
 
             // Reset the flipped buttons array for the next attempt
@@ -197,10 +200,50 @@ public class DictionaryScene2 : MonoBehaviour
         }
         else
         {
-            // If not both buttons are flipped, log or handle this case appropriately
             Debug.Log("Attempt to check match without both buttons flipped.");
         }
     }
+
+    // Coroutine to disable matched buttons after a short delay
+    private IEnumerator DisableMatchedButtonsDelayed(Button button1, Button button2)
+    {
+        yield return new WaitForSeconds(1f); // Wait 1 second
+
+        if (button1 != null)
+            button1.interactable = false;
+        if (button2 != null)
+            button2.interactable = false;
+    }
+
+    // Helper function to change button color
+    private void SetButtonColor(Button button, bool isMatch)
+    {
+        if (button != null)
+        {
+            // Get the Image component attached to the button
+            Image buttonImage = button.GetComponent<Image>();
+
+            // Check if the button has an Image component (it should have)
+            if (buttonImage != null)
+            {
+                if (isMatch)
+                {
+                    // Set to light green for correct match
+                    buttonImage.color = new Color(0.7f, 1f, 0.7f);  // Light green
+                }
+                else
+                {
+                    // Set to light red for incorrect match
+                    buttonImage.color = new Color(1f, 0.7f, 0.7f);  // Light red
+                }
+            }
+            else
+            {
+                Debug.LogError("Button does not have an Image component!");
+            }
+        }
+    }
+
 
     // Function to handle when a match is made
     private void HandleMatchMade()
@@ -227,28 +270,22 @@ public class DictionaryScene2 : MonoBehaviour
         Button button1 = flippedButtons[0];
         Button button2 = flippedButtons[1];
 
-        // Wait 1 second before hiding text
+        // Wait 1 second to let the color effect show
         yield return new WaitForSeconds(1f);
 
-        // Check if the buttons still exist and if they have not been interacted with again
-        if (button1 != null && button1.interactable)
+        // Reset the color back to white before flipping the buttons
+        if (button1 != null)
         {
-            // Hide text on the first flipped button if it's still valid
-            TextMeshProUGUI textComponent1 = button1.GetComponentInChildren<TextMeshProUGUI>();
-            if (textComponent1 != null)
-            {
-                textComponent1.text = "";
-            }
+            // Set button color to white
+            button1.GetComponent<Image>().color = Color.white;
+            button1.GetComponentInChildren<TextMeshProUGUI>().text = "";
         }
 
-        if (button2 != null && button2.interactable)
+        if (button2 != null)
         {
-            // Hide text on the second flipped button if it's still valid
-            TextMeshProUGUI textComponent2 = button2.GetComponentInChildren<TextMeshProUGUI>();
-            if (textComponent2 != null)
-            {
-                textComponent2.text = "";
-            }
+            // Set button color to white
+            button2.GetComponent<Image>().color = Color.white;
+            button2.GetComponentInChildren<TextMeshProUGUI>().text = "";
         }
 
         // Clear references to the flipped buttons in the array after hiding text
@@ -273,14 +310,42 @@ public class DictionaryScene2 : MonoBehaviour
         }
     }
 
-    public void RestartGame()
+    public void RestartGame() //Fixed the restart game method so it actually restarts the game -David
     {
-        // Reload the current scene to restart the game
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-
-        // Reset the timer
+        // Reset all game variables
+        isPaused = false;
+        correctMatches = 0;
+        wrongGuesses = 10;
         timer = timerDuration;
-        UpdateTimerDisplay(); // Update the timer display
+        isTimerRunning = false;
+
+
+        // Reactivate buttons and reset their states
+        foreach (Button button in buttonList)
+        {
+            button.interactable = true;
+            TextMeshProUGUI textComponent = button.GetComponentInChildren<TextMeshProUGUI>();
+            if (textComponent != null)
+            {
+                textComponent.text = ""; // Hide the text
+            }
+        }
+
+        // Shuffle and assign terms again for a fresh start
+        ShuffleAndAssignTerms();
+
+        // Update UI elements
+        UpdateWrongGuessText();
+        UpdateTimerDisplay();
+
+        // Start the timer again
+        StartTimer();
+
+        // Hide the restart button
+        restartButton.gameObject.SetActive(false);
+
+        // Resume the game by resetting time scale
+        Time.timeScale = 1f;
     }
 
     // Function to load the next scene
