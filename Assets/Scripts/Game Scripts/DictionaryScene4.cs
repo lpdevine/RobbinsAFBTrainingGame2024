@@ -100,24 +100,29 @@ public class DictionaryScene4 : MonoBehaviour
     // Function for button clicking
     private void ClickButton(Button button)
     {
-        // Get the TextMeshPro component from the button, which is used to display text.
         TextMeshProUGUI textComponent = button.GetComponentInChildren<TextMeshProUGUI>();
 
-        // Check if the text on the button is currently showing.
-        if (textComponent.text == buttonToTextMapping[button])
+        // Determine if the text is already showing or not
+        bool showText = textComponent.text == "";
+
+        // Start the flip animation with a callback to handle flipping logic after animation
+        StartCoroutine(FlipCard(button, showText, () =>
         {
-            // If the text is showing, clear it to hide the text.
-            textComponent.text = "";
-            // Clear this button's status as a flipped button.
-            ClearFlippedButton(button);
-        }
-        else
-        {
-            // If the text is not showing, display the corresponding term or definition.
-            textComponent.text = buttonToTextMapping[button];
-            // Mark this button as flipped to track which buttons are currently showing text.
-            SetFlippedButton(button);
-        }
+            if (showText)
+            {
+                // Mark this button as flipped and check for a match if two are flipped
+                SetFlippedButton(button);
+                if (flippedButtons[0] != null && flippedButtons[1] != null)
+                {
+                    CheckForMatch();
+                }
+            }
+            else
+            {
+                // Clear flipped button state if unflipping
+                ClearFlippedButton(button);
+            }
+        }));
     }
 
     // Set a button as flipped and check for matches if necessary
@@ -277,20 +282,60 @@ public class DictionaryScene4 : MonoBehaviour
         if (button1 != null)
         {
             // Set button color to white
-            button1.GetComponent<Image>().color = Color.white;
+            button1.GetComponent<Image>().color = new Color(1f, 1f, 1f, 0.7f);
             button1.GetComponentInChildren<TextMeshProUGUI>().text = "";
         }
 
         if (button2 != null)
         {
             // Set button color to white
-            button2.GetComponent<Image>().color = Color.white;
+            button2.GetComponent<Image>().color = new Color(1f, 1f, 1f, 0.7f);
             button2.GetComponentInChildren<TextMeshProUGUI>().text = "";
         }
 
         // Clear references to the flipped buttons in the array after hiding text
         flippedButtons[0] = null;
         flippedButtons[1] = null;
+    }
+
+    private IEnumerator FlipCard(Button button, bool showText, System.Action onFlipComplete)
+    {
+        float duration = 0.3f;  // Duration of the flip
+        float halfDuration = duration / 2f;
+        float time = 0f;
+
+        // First half of the flip (0 to 90 degrees)
+        while (time < halfDuration)
+        {
+            time += Time.deltaTime;
+            float angle = Mathf.Lerp(0f, 90f, time / halfDuration);
+            button.transform.rotation = Quaternion.Euler(0f, angle, 0f);
+            yield return null;
+        }
+
+        // After reaching 90 degrees, change text visibility
+        TextMeshProUGUI textComponent = button.GetComponentInChildren<TextMeshProUGUI>();
+        if (textComponent != null)
+        {
+            textComponent.text = showText ? buttonToTextMapping[button] : "";
+        }
+
+        time = 0f;
+
+        // Second half of the flip (90 to 180 degrees)
+        while (time < halfDuration)
+        {
+            time += Time.deltaTime;
+            float angle = Mathf.Lerp(90f, 180f, time / halfDuration);
+            button.transform.rotation = Quaternion.Euler(0f, angle, 0f);
+            yield return null;
+        }
+
+        // Reset rotation to zero for the next flip and make sure text is visible
+        button.transform.rotation = Quaternion.identity;
+
+        // Call the completion callback
+        onFlipComplete?.Invoke();
     }
 
 
