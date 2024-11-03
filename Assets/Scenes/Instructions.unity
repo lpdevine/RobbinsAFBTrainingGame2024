@@ -182,7 +182,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Scoring:\n\nCorrect Match: One point\nMust collect 4 points to Continue\nBest
     times are recorded.\n\n Game Over Conditions:\n\nYou complete all rounds within
-    the time limit.\nYou exceed the limit of 5 incorrect matches.\n"
+    the time limit.\nYou exceed the limit of 10 incorrect matches.\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8e0f2eb9da0644f238a63f02da0c13fc, type: 2}
   m_sharedMaterial: {fileID: 2805994301032696971, guid: 8e0f2eb9da0644f238a63f02da0c13fc, type: 2}
@@ -986,7 +986,7 @@ MonoBehaviour:
     not, they will be flipped back face down, the and you can try again \n\nTime
     Limit: Each round has a time limit. You must match all the cards within the given
     time to proceed to the next round. Keep an eye on the timer at the top of the
-    screen!\n\nIncorrect Answers: Be careful! You are allowed only 5 incorrect matches
+    screen!\n\nIncorrect Answers: Be careful! You are allowed only 10 incorrect matches
     throughout the entire game. If you exceed this limit, the game will end, and
     your score will be recorded.\n\nMultiple Rounds: There are multiple rounds of
     increasing difficulty. As you progress, more cards will be added, making the
