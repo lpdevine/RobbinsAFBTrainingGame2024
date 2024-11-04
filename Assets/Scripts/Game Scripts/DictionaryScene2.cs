@@ -356,7 +356,6 @@ public class DictionaryScene2 : MonoBehaviour
 
     public void RestartGame() //Fixed the restart game method so it actually restarts the game -David
     {
-
         // Reset all game variables
         isPaused = false;
         correctMatches = 0;
@@ -369,11 +368,11 @@ public class DictionaryScene2 : MonoBehaviour
         {
             button.interactable = true;
 
-            // Reset the button color to white
+            // Reset the button color to white (or any default color you prefer)
             Image buttonImage = button.GetComponent<Image>();
             if (buttonImage != null)
             {
-                buttonImage.color = Color.white; // Set the color back to white
+                buttonImage.color = new Color(1f, 1f, 1f, 0.7f);  // Reset color to white
             }
 
             // Reset the text color and clear the text

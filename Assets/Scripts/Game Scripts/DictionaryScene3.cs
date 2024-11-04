@@ -362,14 +362,24 @@ public class DictionaryScene3 : MonoBehaviour
         timer = timerDuration;
         isTimerRunning = false;
 
-        // Reactivate buttons and reset their states
+        // Reactivate buttons, reset colors, and clear text
         foreach (Button button in buttonList)
         {
             button.interactable = true;
+
+            // Reset the button color to white (or any default color you prefer)
+            Image buttonImage = button.GetComponent<Image>();
+            if (buttonImage != null)
+            {
+                buttonImage.color = new Color(1f, 1f, 1f, 0.7f);  // Reset color to white
+            }
+
+            // Reset the text color and clear the text
             TextMeshProUGUI textComponent = button.GetComponentInChildren<TextMeshProUGUI>();
             if (textComponent != null)
             {
                 textComponent.text = ""; // Hide the text
+                textComponent.color = Color.black; // Set text color to black for readability
             }
         }
 
