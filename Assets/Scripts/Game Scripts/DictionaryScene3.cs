@@ -47,10 +47,10 @@ public class DictionaryScene3 : MonoBehaviour
 
     private void PrepareTermsAndDefinitions()
     {
-        termsDefinitions.Add("Electronic Data", "Electronic documents and records");
-        termsDefinitions.Add("Federal Record", "Instagram post about Air Force recruitment");
-        termsDefinitions.Add("Air Force Record", "Budget Development");
-        termsDefinitions.Add("Records Management Program", "Basis for studies and analysis of policy, plans, operations, tech, and logistics");
+        termsDefinitions.Add("Pregnancy Discrimination Act", "Prohibits discrimination against pregnant women");
+        termsDefinitions.Add("Americans with Disabilities Act Title I & V", "Protects people with disabilities in the private sector");
+        termsDefinitions.Add("Genetic Information Nondiscrimimnation Act", "Prohibits discrimination due to medical history");
+        termsDefinitions.Add("A prohibited personnel practice", "Nepotism");
 
         // Initialize more terms and definitions as needed here
         ShuffleAndAssignTerms();

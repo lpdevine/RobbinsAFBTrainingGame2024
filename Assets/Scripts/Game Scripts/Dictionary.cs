@@ -61,10 +61,10 @@ public class Dictionary : MonoBehaviour
 
     private void PrepareTermsAndDefinitions()
     {
-        termsDefinitions.Add("Air Force Record", "G-Series Orders");
-        termsDefinitions.Add("Records Management Program", "Ensuring decision availability and reuse");
-        termsDefinitions.Add("Electronic Data", "E-mail");
-        termsDefinitions.Add("Federal Record", "Social Media post about Air Force policy");
+        termsDefinitions.Add("Unwelcome conduct creating a hostile work environment", "Harrassment");
+        termsDefinitions.Add("Purpose of No FEAR Act", "Protect federal employees from discrimination & retaliation");
+        termsDefinitions.Add("Personnel should report violations to", "Your supervisor or EEO counselor");
+        termsDefinitions.Add("A prohibited personnel practice", "Veterans preference");
 
         // Initialize more terms and definitions as needed here
         ShuffleAndAssignTerms();

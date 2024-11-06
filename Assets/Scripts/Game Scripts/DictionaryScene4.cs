@@ -47,11 +47,11 @@ public class DictionaryScene4 : MonoBehaviour
 
     private void PrepareTermsAndDefinitions()
     {
-        
-        termsDefinitions.Add("Records Management Program", "Protects legal and financial rights of the Air Force");
-        termsDefinitions.Add("Records Responsibility", "All personal related to the Air Force have a responsibility to create/maintain records.");
-        termsDefinitions.Add("Record Life Cycle: Stage 1", "Creation: Drafting the record and documenting finalization of approval");
-        termsDefinitions.Add("Discovery", "The obligation of parties to a lawsuit to exchange information");
+
+        termsDefinitions.Add("A prohibited personnel practice", "Coercing politicy activity");
+        termsDefinitions.Add("Age Discrimination in Employment Act", "Protects people 40+ years old");
+        termsDefinitions.Add("Violation of Civil Service Reform Act", "Retaliating against whistleblowers");
+        termsDefinitions.Add("No FEAR Act", "Notification and Federal Employee Antidiscrimination and Retaliation Act");
 
         // Initialize more terms and definitions as needed here
         ShuffleAndAssignTerms();

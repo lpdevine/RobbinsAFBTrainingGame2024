@@ -48,10 +48,10 @@ public class DictionaryScene2 : MonoBehaviour
 
     private void PrepareTermsAndDefinitions()
     {
-        termsDefinitions.Add("Federal Record", "Social media post contains unique Air Force information");
-        termsDefinitions.Add("Social Media", "Public post about Air Force activities that integrate web technology, social interaction, and user-generated content");
-        termsDefinitions.Add("Electronic Data", "MICT, TBA, Leave Web, Defense Connect Online");
-        termsDefinitions.Add("Air Force Record", "Drug Testing Rosters");
+        termsDefinitions.Add("The Equal Pay Act of 1963", "Forbids sex-based wage discrimination");
+        termsDefinitions.Add("Title VII of Civil Rights Act of 1964", "Prohibits discrimination on the basis of race, sex, & religion");
+        termsDefinitions.Add("A prohibited personnel practice", "Obstructing competition");
+        termsDefinitions.Add("Rehabilitation Act of 1973", "Protects people with disabilities in the federal government");
 
         // Initialize more terms and definitions as needed here
         ShuffleAndAssignTerms();

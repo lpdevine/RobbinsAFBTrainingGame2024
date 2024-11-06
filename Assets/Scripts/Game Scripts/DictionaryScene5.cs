@@ -49,12 +49,12 @@ public class DictionaryScene5 : MonoBehaviour
 
     private void PrepareTermsAndDefinitions()
     {
-        termsDefinitions.Add("Record Life Cycle: Stage 2", "Maintenance and use: a record is deemed temporary or permanent. Filed accordingly and preserved with integrity for resuse");
-        termsDefinitions.Add("Records Life Cycle: Stage 3", "Disposition: Once a record is deemed to be of no value, it's disposed in accordance with Air Force policy");
-        termsDefinitions.Add("eDiscovery", "Exchanging electronically stored informatrion as a part of discovery");
-        termsDefinitions.Add("Records Management Program", "Ensures continuity of operations in the event of an emergency");
+        termsDefinitions.Add("Prohibited personnel practice", "Inappropriate recommendations");
+        termsDefinitions.Add("If you have been subjected to discrimination", "File an Equal Employment Opportunity complaint");
+        termsDefinitions.Add("Illegal treatment of federal employess of different categories", "Discrimination");
+        termsDefinitions.Add("Person who exposes illegal activity", "Whistleblower");
 
-    
+
         // Initialize more terms and definitions as needed here
         ShuffleAndAssignTerms();
     }
