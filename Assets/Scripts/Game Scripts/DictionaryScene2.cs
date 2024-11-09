@@ -49,7 +49,7 @@ public class DictionaryScene2 : MonoBehaviour
     private void PrepareTermsAndDefinitions()
     {
         termsDefinitions.Add("The Equal Pay Act of 1963", "Forbids sex-based wage discrimination");
-        termsDefinitions.Add("Title VII of Civil Rights Act of 1964", "Prohibits discrimination on the basis of race, sex, & religion");
+        termsDefinitions.Add("Title VII of Civil Rights Act of 1964", "Prohibits discrimination on the basis of race, sex, and religion");
         termsDefinitions.Add("A prohibited personnel practice", "Obstructing competition");
         termsDefinitions.Add("Rehabilitation Act of 1973", "Protects people with disabilities in the federal government");
 

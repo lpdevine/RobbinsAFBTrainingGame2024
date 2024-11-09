@@ -62,7 +62,7 @@ public class Dictionary : MonoBehaviour
     private void PrepareTermsAndDefinitions()
     {
         termsDefinitions.Add("Unwelcome conduct creating a hostile work environment", "Harrassment");
-        termsDefinitions.Add("Purpose of No FEAR Act", "Protect federal employees from discrimination & retaliation");
+        termsDefinitions.Add("Purpose of No FEAR Act", "Protect federal employees from discrimination and retaliation");
         termsDefinitions.Add("Personnel should report violations to", "Your supervisor or EEO counselor");
         termsDefinitions.Add("A prohibited personnel practice", "Veterans preference");
 
