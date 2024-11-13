@@ -4,13 +4,14 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #343a40;
+  color: rgba(0, 0, 0, 0.87); /* Adjusted text color for better readability on white background */
+  background-color: white; /* Changed background to white */
 }
 
-body{
-  margin:0;
-  padding:0;
+body {
+  margin: 0;
+  padding: 0;
+  background-color: white; /* Ensure body background is also white */
 }
 
 a {
@@ -22,11 +23,9 @@ a:hover {
   color: #535bf2;
 }
 
-
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
-
   text-align: center;
 }
 
@@ -38,9 +37,9 @@ button {
   font-weight: 500;
   font-family: inherit;
   background-color: #1a1a1a;
+  color: white; /* Set button text color to white */
   cursor: pointer;
   transition: border-color 0.25s;
-
   text-align: center;
 }
 button:hover {

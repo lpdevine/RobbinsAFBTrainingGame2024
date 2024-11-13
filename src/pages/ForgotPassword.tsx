@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { sendPasswordResetEmail } from "firebase/auth";
-import { auth, database } from "../firebase.ts";
-import "../components/components.css"
+import { auth } from "../firebase.ts";
+import "../components/components.css";
 import Navbar from "../components/Navbar";
-import ResizeableBox from "../components/ResizeableBox";
 import EmailPasswordForm from "../components/EmailPasswordForm";
 
 function ForgotPassword() {
@@ -20,15 +19,14 @@ function ForgotPassword() {
             [name]: value
         }));
     }
-    
 
     async function handleSubmit(e: React.FormEvent) {
         e.preventDefault();
         setShowError(false);
 
         try {
-            await sendPasswordResetEmail(auth, emailData.email)
-            console.log('Email successfully sent')
+            await sendPasswordResetEmail(auth, emailData.email);
+            console.log('Email successfully sent');
             navigate('/login');
         } catch (error) {
             setErrorMessage('Error when trying to send email reset: ' + errorMessage);
@@ -37,26 +35,21 @@ function ForgotPassword() {
     }
 
     return (
-        <>
-            <Navbar />
-            <ResizeableBox>
-                <div>
-                    <EmailPasswordForm
-                        formType="forgotpassword"
-                        title="Forgot Password"
-                        errorMessage={errorMessage}
-                        showError={showError}
-                        formData={emailData}
-                        onSubmit={handleSubmit}
-                        onInputChange={handleChange}
-                        onSelectChange={handleChange}
-                    />
-                </div>
-            </ResizeableBox>
+        <div className="login-container"> {/* Centered, larger container */}
+            <EmailPasswordForm
+                formType="forgotpassword"
+                title="Forgot Password"
+                errorMessage={errorMessage}
+                showError={showError}
+                formData={emailData}
+                onSubmit={handleSubmit}
+                onInputChange={handleChange}
+                onSelectChange={handleChange}
+            />
             <Link to="/signup" className="link">New Here? Sign Up</Link>
+            <br />
             <Link to="/signin" className="link"> Back To Sign In</Link>
-
-        </>
+        </div>
     );
 }
 

@@ -4,7 +4,7 @@ import { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useNavigate, Link } from "react-router-dom";
 import EmailPasswordForm from "../components/EmailPasswordForm.tsx";
-
+import "../components/components.css";
 
 function Signup() {
     const [signupData, setSignupData] = useState({
@@ -20,13 +20,12 @@ function Signup() {
     const navigate = useNavigate();
 
     function handleChange(e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>) {
-    const { name, value } = e.target;
-    setSignupData(prevState => ({
-        ...prevState,
-        [name]: value
-    }));
-}
-
+        const { name, value } = e.target;
+        setSignupData(prevState => ({
+            ...prevState,
+            [name]: value
+        }));
+    }
 
     async function handleSubmit(e: React.FormEvent) {
         e.preventDefault();
@@ -63,9 +62,8 @@ function Signup() {
             };
 
             await createUserWithEmailAndPassword(auth, signupData.email, signupData.password);
+            await SetDoc(userData, "users/" + signupData.email);
 
-            await SetDoc(userData, "users/" + signupData.email)
-            
             console.log("SUCCESS: User created with email " + signupData.email);
             navigate("/signin");
         } catch (error) {
@@ -76,7 +74,7 @@ function Signup() {
     }
 
     return (
-        <>
+        <div className="login-container">
             <EmailPasswordForm
                 formType="signup"
                 title="Signup"
@@ -87,9 +85,9 @@ function Signup() {
                 onInputChange={handleChange}
                 onSelectChange={handleChange}
             />
-            <hr className="short-hr"></hr>
+            <hr className="short-hr" />
             <Link to="/signin" className="link">Already have an account?</Link>
-        </>
+        </div>
     );
 }
 

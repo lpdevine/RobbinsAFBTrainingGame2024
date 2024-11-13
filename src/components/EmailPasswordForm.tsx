@@ -24,10 +24,11 @@ function EmailPasswordForm(props: Props) {
     return (
         <>
             {props.showError && <ErrorMessage message={props.errorMessage} />}
-            <div>
+            <div className="form-container"> {/* Optional container for styling */}
                 <form onSubmit={props.onSubmit}>
-                    <h1>{props.title}</h1>
+                    <h1 className="form-title">{props.title}</h1> {/* Title styling */}
                     <input
+                        className="form-input"
                         placeholder="Email"
                         type="text"
                         name="email"
@@ -39,6 +40,7 @@ function EmailPasswordForm(props: Props) {
                     {formType === 'signup' && (
                         <>
                             <input
+                                className="form-input"
                                 placeholder="First Name"
                                 type="text"
                                 name="firstName"
@@ -48,6 +50,7 @@ function EmailPasswordForm(props: Props) {
                             />
                             <br />
                             <input
+                                className="form-input"
                                 placeholder="Last Name"
                                 type="text"
                                 name="lastName"
@@ -57,12 +60,13 @@ function EmailPasswordForm(props: Props) {
                             />
                             <br />
                             <select
+                                className="form-select"
                                 name="squadron"
                                 value={props.formData["squadron"]}
                                 onChange={props.onSelectChange}
                                 required
                             >
-                                <option value="" disabled selected hidden>Squadron</option>
+                                <option value="" disabled hidden>Squadron</option>
                                 <option value="577">577</option>
                                 <option value="578">578</option>
                                 <option value="579">579</option>
@@ -76,6 +80,7 @@ function EmailPasswordForm(props: Props) {
                     {(formType === 'login' || formType === 'signup') && (
                         <>
                             <input
+                                className="form-input"
                                 placeholder="Password"
                                 type="password"
                                 name="password"
@@ -86,7 +91,7 @@ function EmailPasswordForm(props: Props) {
                             <br />
                         </>
                     )}
-                    <button type="submit">Submit</button>
+                    <button className="form-submit-button" type="submit">Submit</button>
                 </form>
             </div>
         </>

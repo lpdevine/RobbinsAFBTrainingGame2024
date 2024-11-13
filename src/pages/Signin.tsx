@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import EmailPasswordForm from "../components/EmailPasswordForm";
 import Navbar from "../components/Navbar";
-import "../components/components.css"
+import "../components/components.css";
 import ResizeableBox from "../components/ResizeableBox";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth, database } from "../firebase.ts"; //Import database
@@ -20,8 +20,7 @@ function Signin() {
         ...prevState,
         [name]: value
     }));
-}
-
+  }
 
   async function HandleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -38,15 +37,11 @@ function Signin() {
       // Fetch user data from Firestore based on their email
       const userDoc = await getDoc(doc(database, 'users', signinData.email));
       if (userDoc.exists()) {
-        // User data found, save it to local storage
         const userData = signinData.email;
         localStorage.setItem("userData", JSON.stringify(userData));
-        console.log(userData)
-
-        // Navigate to another page
+        console.log(userData);
         navigate("/dashboard");
       } else {
-        // No user data found
         console.log("No user data found!");
       }
     } catch (error) {
@@ -59,25 +54,23 @@ function Signin() {
   return (
     <>
       <Navbar />
-      <ResizeableBox>
-        <div>
-          <EmailPasswordForm
-            formType="login"
-            title="Login"
-            errorMessage={errorMessage}
-            showError={showError}
-            formData={signinData}
-            onSubmit={HandleSubmit}
-            onInputChange={handleChange}
-            onSelectChange={handleChange}
-          />
-          <Link to="/forgot-password" className="link"> Forgot Password?</Link>
-          <hr className="short-hr"></hr>
-          <button className="button-with-link">
-            <a href="/signup">Create New Account</a>
-          </button>
-        </div>
-      </ResizeableBox>
+      <div className="login-container"> {/* Centered, larger login container */}
+        <EmailPasswordForm
+          formType="login"
+          title="Login"
+          errorMessage={errorMessage}
+          showError={showError}
+          formData={signinData}
+          onSubmit={HandleSubmit}
+          onInputChange={handleChange}
+          onSelectChange={handleChange}
+        />
+        <Link to="/forgot-password" className="link"> Forgot Password?</Link>
+        <hr className="short-hr" />
+        <button className="button-with-link">
+          <a href="/signup">Create New Account</a>
+        </button>
+      </div>
     </>
   );
 }
