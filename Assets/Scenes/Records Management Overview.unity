@@ -266,7 +266,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000061035156, y: 0.00021362305}
+  m_AnchoredPosition: {x: 0, y: 0.000015258789}
   m_SizeDelta: {x: 844.5, y: 401.65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &57920635
@@ -289,14 +289,18 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\nAm I responsible for records?\n\nAll military, civilians, and contractors
-    are considered users and have the\nresponsibility to create and maintain Air
-    Force records, which are considered to be federal records.\n\nIf federal records
-    are illegally removed from government custody, unlawfully changed, or destroyed,
-    you can be subject to fines, imprisonment, and penalties per Title 18 United
-    States Code, Section 2071.\n\nFor questions contact\n\u2022 Your Unit POCs\n\u2022
-    Commanders\n\u2022 Records Inventory Managers (RIMs)\n\u2022 Base Records Manager
-    (BRM)"
+  m_text: "PROHIBITED PERSONNEL PRACTICES\n\n1. Discrimination \u2013 An agency official
+    shall not discriminate against an employee based on race, color, religion, sec,
+    age, national origin, mental or physical disability, marital status or political
+    affiliation.\r\n\n2. Inappropriate Recommendations \u2013 An agency official
+    shall not ask for, or consider employment recommendations based on political
+    connections or influence, or factors based on other personal knowledge or characteristics.\r\n\n3.
+    Coercing Political Activity \u2013 An agency official shall not pressure or persuade
+    the political activity of any person.\r\n\n4. Obstructing Competition \u2013
+    An agency official shall not deceive or willfully obstruct anyone from competing
+    for employment.\r\n\n5. Influencing Withdrawal from Competition \u2013 An agency
+    official shall not manipulate anyone to withdraw from competition in order to
+    improve or injure the employment prospects of another person.\r"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1209,7 +1213,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1921855556}
   m_Direction: 0
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.99991375
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1611,7 +1615,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1674653315}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.999917
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2137,7 +2141,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1116130402}
   m_Direction: 0
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.99991375
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2263,7 +2267,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 612049748}
   m_Direction: 0
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.99991375
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2960,7 +2964,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000061035156, y: 0.00021362305}
+  m_AnchoredPosition: {x: 0, y: 0.000015258789}
   m_SizeDelta: {x: 844.5, y: 401.65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &488425295
@@ -2983,14 +2987,16 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\nElectronic Data\nE-mail, electronic documents, databases and records
-    in automated\ninformation systems,\nWeb 2.0 technology or social media, generated
-    by processes and\nprescribed in Air Force\nPublications are Air Force records
-    and must be maintained IAW records\nmanagement requirements\n\nCommon IT Systems\n\u2022
-    MICT\n\u2022 TBA\n\u2022 Leave web\n\u2022 Recorded Defense Connect Online and\n\u2022
-    Defense Collaboration Services sessions\nElectronic records are the media of
-    choice for use, storage and\nmaintenance per AF Records Management, Policy and
-    Office of\nManagement and Budget Memorandum M-12-18, Managing\nGovernment Records."
+  m_text: "ANTIDISCRIMINATION LAWS, CONT'D.\n\nThe Rehabilitation Act of 1973 prohibits
+    discrimination against a qualified person with a disability in the feral government.
+    The law also requires that employers reasonably accommodate the known physical
+    or mental limitations of an otherwise qualified individual with a disability
+    who is an applicant or employee, unless doing so would impose an undue hardship
+    on the operation of the employer\u2019s business. \n\nThe Pregnancy Discrimination
+    Act makes it illegal to discriminate against women due to pregnancy, childbirth,
+    or a medical condition related to pregnancy or childbirth. It requires employers
+    to treat women who are pregnant or affected by related conditions the same way
+    as other applicants or employees with similar disabilities or limitations.\r"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3346,7 +3352,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 636687520}
   m_Direction: 0
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.99991375
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3694,7 +3700,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000061035156, y: 0.00021362305}
+  m_AnchoredPosition: {x: 0, y: 0.000015258789}
   m_SizeDelta: {x: 844.5, y: 401.65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &637677169
@@ -3717,47 +3723,17 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '
-
-    Discovery
-
-
-    Definition: Discovery is the obligation of parties
-    to a lawsuit to exchange information.
-
-    The number of litigation hold/record
-    searches involving the Air Force continues to
-
-    increase. Therefore, you may
-    be involved in a search for responsive information, to
-
-    include records in
-    your workspace, government desktop/laptop computer, and
-
-    government email
-    accounts.
-
-
-    Exchanging electronically stored information (ESI) as part of
-    the discovery process
-
-    is called "eDiscovery" as covered by the Federal Rules
-    of Civil Procedure.
-
-    The duty to preserve ESI is an issue of growing importance
-    given the rise of
-
-    electronic documents in virtually all organizations.
-
-
-    When
-    the local Records Professional or managing attorney requires you to conduct
-
-    a
-    search for information responsive to the request, by the suspense date and using
-
-    the
-    provided search terms, you are required to perform a search of all information'
+  m_text: "PROHIBITED PERSONNEL PRACTICES, CONT'D.\n\n9. Other Retaliation \u2013
+    An agency official shall not engage in taking, failing to take, or threaten to
+    take or not to take a personnel action against an employee or applicant because
+    the employee filed a complaint, grievance, an appeal, testified for or helped
+    someone else with one of these activities, cooperated with or disclosed information
+    to the Special Counsel or an Inspector General, or refused to obey an order that
+    would require the employee to violate the law.\r\n\n10. Other Discrimination
+    \u2013 An agency official shall not discriminate based on personal conduct that
+    does not adversely affect job performance. Officials are prohibited from penalizing
+    their employees for conduct that has no adverse impact on job performance such
+    as sexual orientation and gender identity discrimination.\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3868,7 +3844,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000061035156, y: 0.00019836426}
+  m_AnchoredPosition: {x: 0, y: 0.000015258789}
   m_SizeDelta: {x: 844.5, y: 401.65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &639478403
@@ -3891,14 +3867,15 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\nAir Force Records Management Program\n\n\u2022 Enables complete, accurate
-    and objective accounting of the Air Force's\nactivities to the general public.\n\n\u2022
-    Provides the basis for studies and analysis of policies, plans, operations, technology,
-    logistics, and personnel.\n\n\u2022 Ensures availability of data supporting the
-    Air Force's past decisions is available for reuse.\n\n\u2022 Protects the legal
-    and financial rights of the Air Force, our employees, and the\ngeneral public
-    (these are essential records).\n\n\u2022 Ensures continuity of operations in
-    the event of an emergency or natural\ndisaster (these are also essential records)."
+  m_text: "THE NOTIFICATION AND FEDERAL EMPLOYEE ANTIDISCRIMINATION AND RETALIATION
+    ACT\n\nThe No FEAR course is designed to provide federal civilian employees,
+    supervisors/managers and military supervisors of civilian-employees initial and
+    reoccurring training regarding Federal antidiscrimination, retaliation, and whistleblower
+    rights/laws.\r\n\r\nThe No FEAR Act ensures that the rights of employees, former
+    employees, and applicants for employment are protected under Federal antidiscrimination,
+    retaliation and whistleblower laws. The course objective is to familiarize agency
+    employees about the rights and remedies available under the Antidiscrimination
+    Laws and Whistleblower Protection Laws applicable to them.\r"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4058,7 +4035,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 478344512}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.999917
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4184,7 +4161,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1958555614}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.999917
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4261,7 +4238,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000061035156, y: 0.00019836426}
+  m_AnchoredPosition: {x: 0, y: 0.000015258789}
   m_SizeDelta: {x: 844.5, y: 401.65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &713276158
@@ -4284,14 +4261,20 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\nWhat are Air Force Records?\n\nAir Force records are recorded information
-    that serves as evidence\nof the activities of the Air Force and documents the
-    Air Force's\ntransaction of public business, that is, the activities necessary
-    for\nthe proper performance of our functions to support and carry out\nthe Air
-    Force mission. Records are media neutral.\n\nExamples of Records\n\u2022 G-Series
-    Orders\n\u2022 Drug Testing Rosters\n\u2022 Budget Development\n\u2022 Personnel
-    Information File\n\u2022 Government Impact Program\n\u2022 Delegation/Designation
-    (Appointment) Letters\n\u2022 Directives, Instructions, Manuals, Supplements"
+  m_text: "ANTIDISCRIMINATION LAWS\n\r\nEqual Pay Act of 1963 makes it illegal to
+    pay different wages to men and women if they perform equal work in the same workplace.
+    \u201CEqual Work\u201D means that the jobs do not need to be identical, but they
+    must be of equal skill, effort, and responsibility, in the same establishment
+    and under similar working conditions. Enacted in an effort to abolish gender
+    discrimination.\r\n\r\nTitle VII of Civil Rights Act of 1964 prohibits discrimination
+    against someone on the basis of race, color, religion, sex, or national origin.
+    Employers are required to accommodate applicants\u2019 and employees\u2019 sincerely
+    held religious practices, unless doing so would impose an undue hardship on the
+    operation of the employer\u2019s business/mission.\r\n\r\nAge Discrimination
+    in Employment Act of 1967 protects people who are 40 or older from discrimination
+    because of age. Also makes it illegal to retaliate against a person because the
+    person complained about discrimination, filed a charge of discrimination, or
+    participated in an employment discrimination investigation or lawsuit.\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4451,7 +4434,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 2146655717}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.999917
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4577,7 +4560,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 144634020}
   m_Direction: 0
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.99991375
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4819,7 +4802,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000061035156, y: 0.00021362305}
+  m_AnchoredPosition: {x: 0, y: 0.000015258789}
   m_SizeDelta: {x: 844.5, y: 401.65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &787546462
@@ -4842,15 +4825,16 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\nESI Examples\n\nE-mails\n\u2022 Voicemails\n\u2022 Instant messages\n\u2022
-    Audio files and other types of digital data\n\u2022 Stored data on:\n- Handheld
-    devices and backup tapes\n- External hard disk drives\n- CDs, DVDs, and old computers\n\nThis
-    includes a search of paper, non-electronic documentation, or ESI within the\nworkspace,
-    government-provided computer, government email accounts, Outlook\npst files,
-    shared network drive, SharePoint sites, and so on; then, suspend the usual records
-    disposition until the Air Force attorney contacts you.\n\nImmediately move relevant
-    information to a secure location so it is not subject to\nover-writing, archiving,
-    or destruction. Work with your Record Professionals for\nfurther guidance."
+  m_text: "PROHIBITED PERSONNEL PRACTICES, CONT'D.\n\n11. Veterans Preference \u2013
+    An agency official shall not take or fail to take, recommend, or approve a personnel
+    action if the official knows that doing so would violate a veterans\u2019 preference
+    requirements.\r\n\n12. Violating Rules That Implement a Merit System Principle
+    \u201CCatch-all\u201D \u2013 An agency official shall not take or fail to take
+    a personnel action if doing so would violate a law, rule, or regulation implementing
+    or directly concerning the merit system principles.\r\n\n13. Imposing Nondisclosure
+    Agreement That Doesn\u2019t Allow Whistleblowing \u2013 Requires agencies to
+    inform employees who are subject to non-disclosure agreements that the agreement
+    does not supersede employees\u2019 whistleblowing rights.\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5560,7 +5544,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 2046090517}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.999917
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -5879,7 +5863,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 831313479}
   m_Direction: 0
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.99991375
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -6894,7 +6878,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 774949054}
   m_Direction: 0
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.99991375
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -7165,7 +7149,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 500675295}
   m_Direction: 0
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.99991375
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -7278,7 +7262,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000061035156, y: 0.00019836426}
+  m_AnchoredPosition: {x: 0, y: 0.000015258789}
   m_SizeDelta: {x: 844.5, y: 401.65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1478343510
@@ -7301,38 +7285,16 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '
-
-    Social Media as an Air force Record
-
-
-    Social media includes
-    activities that integrate web technology,
-
-    social interaction, and user-generated
-    content.
-
-    Agencies use social media to connect people to the Government
-
-    and
-    to share information. These new platforms support business
-
-    processes that
-    both create and manage content.
-
-
-    The principles for analyzing, scheduling,
-    and managing records are
-
-    based on content and are independent of the medium.
-    Where and
-
-    how an Airman creates, uses, or stores information for Air Force
-
-    business
-    does not automatically exclude it from Air Force Records
-
-    Management.'
+  m_text: "ANTIDISCRIMINATION LAWS, CONT'D.\n\nTitle I and V of the American with
+    Disabilities Act of 1990 prohibits disability discrimination in the private sector
+    and in state and local governments.\r\n\r\nSection 102 and 103 of the Civil Rights
+    Act of 1991 permits jury trials and compensatory and punitive damage awards in
+    intentional discrimination cases.\r\n\r\nGenetic Information Nondiscrimination
+    Act of 2008 makes it illegal to discriminate against employees or applicants
+    because of genetic information. Genetic information includes information about
+    an individual\u2019s genetic tests and the genetic tests of an individual\u2019s
+    family members, as well as information about any disease, disorder or condition
+    of an individual\u2019s family members. "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -7601,7 +7563,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1942440374}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.999917
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -7678,7 +7640,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000061035156, y: 0.00021362305}
+  m_AnchoredPosition: {x: 0, y: 0.000015258789}
   m_SizeDelta: {x: 844.5, y: 401.65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1537920015
@@ -7701,14 +7663,18 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\nAm I responsible for records?\n\nAll military, civilians, and contractors
-    are considered users and have the\nresponsibility to create and maintain Air
-    Force records, which are considered to be federal records.\n\nIf federal records
-    are illegally removed from government custody, unlawfully changed, or destroyed,
-    you can be subject to fines, imprisonment, and penalties per Title 18 United
-    States Code, Section 2071.\n\nFor questions contact\n\u2022 Your Unit POCs\n\u2022
-    Commanders\n\u2022 Records Inventory Managers (RIMs)\n\u2022 Base Records Manager
-    (BRM)"
+  m_text: "PROHIBITED PERSONNEL PRACTICES, CONT'D.\n\n6. Unfair Advantage \u2013
+    An agency official shall not give an unauthorized preference or advantage to
+    anyone that helps or hurts the employment prospects of another employee or applicant.\r\n\n7.
+    Nepotism \u2013 A federal government employee shall not engage in hiring, promoting,
+    or advocating the hiring or promotion of relatives.\r\n\n8. Whistleblower Retaliation
+    \u2013 An agency official shall not engage in reprisal or retaliate against an
+    employee for whistleblowing. A whistleblower is an employee, former employee,
+    or contractor who provides information he or she reasonably believes evidences
+    waste, fraud, or abuse. To prove whistleblower retaliation an employee must show
+    one of the following:\r\na. Violation(s) of a law, rule, or regulation\r\nb.
+    Gross mismanagement\r\nc. Gross waste of funds\r\nd. An abuse of authority\r\ne.
+    A substantial and specific danger to public health or safety\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -7981,7 +7947,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000061035156, y: 0.00021362305}
+  m_AnchoredPosition: {x: 0, y: 0.000015258789}
   m_SizeDelta: {x: 844.5, y: 401.65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1616694924
@@ -8004,15 +7970,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\nAir Force Records and Social Media\n\nTo determine if your social media
-    content is a federal record, answer\nthese questions:\n\u2022 Does it contain
-    evidence of an Air Force policy, business, mission, etc.?\n\u2022 Is the information
-    unique and not available anywhere else?\n\u2022 Is this tool being used in relation
-    to the Air Force's work?\n\u2022 Is use of the tool authorized by the Air Force?\n\u2022
-    Is there a business need for the information?\n\nIf you can answer \"Yes\" to
-    any of these questions, it is likely a federal record.\n\nYou should record a
-    copy or screen shot and save in the unit's inventory as an official Air Force
-    record."
+  m_text: "FILING AN EEO COMPLAINT\n\nIf you are an employee, former employee or
+    applicant for employment and believe you have been subjected to discrimination
+    on the basis of race, color, national origin, sex, age, religion, genetic information
+    or disability, or retaliated against for opposing or participating in a protected
+    Equal Employment Opportunity activity, you have the right to file an Equal Employment
+    Opportunity \ncomplaint.\r\n\nYou must contact your local/servicing Equal Opportunity
+    office within 45 calendar days of the date you learned of the discrimination.\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -8745,7 +8709,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 2129106864}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.999917
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -9248,7 +9212,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1741869455}
   m_Direction: 0
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.99991375
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -9799,7 +9763,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 799992496}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.999917
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -9925,7 +9889,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1662044283}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.999917
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
