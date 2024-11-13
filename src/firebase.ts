@@ -1,4 +1,5 @@
 import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
 import { DocumentReference, DocumentSnapshot, Timestamp, doc, getDoc, getFirestore, setDoc } from "firebase/firestore";
 import { collection, addDoc } from "firebase/firestore"; 
 import { getAuth } from "firebase/auth";
@@ -7,12 +8,13 @@ import { useNavigate } from "react-router-dom";
 
 // Firebase config
 const firebaseConfig = {
-  apiKey: "AIzaSyCouB2oMT773ci5jjVGH1VhagbsnisEBPk",
-  authDomain: "training-website-db2c4.firebaseapp.com",
-  projectId: "training-website-db2c4",
-  storageBucket: "training-website-db2c4.appspot.com",
-  messagingSenderId: "526129435306",
-  appId: "1:526129435306:web:c44fa449bcbd20f2e036d3"
+  apiKey: "AIzaSyCnHIN9RWMTZ1stQzOq-JLaBlANgYPQJJI",
+  authDomain: "robbinsafbtraininggame.firebaseapp.com",
+  projectId: "robbinsafbtraininggame",
+  storageBucket: "robbinsafbtraininggame.firebasestorage.app",
+  messagingSenderId: "663942158934",
+  appId: "1:663942158934:web:81fb086dee29cda775f9f7",
+  measurementId: "G-F8BRRFSWBR"
 };
 
 
