@@ -8,7 +8,6 @@ import "../components/dashboard.css"
 import { Timestamp } from "firebase/firestore";
 
 interface UserData {
-
     firstName: string;
     lastName: string;
     squadron: string;
@@ -49,53 +48,33 @@ function Dashboard(): JSX.Element {
             <div>
                 {userData ? (
                     <>
-                        <h1>Welcome, {userData.firstName}</h1>
-                        <div style={{ textAlign: 'center' }}>
-                            <div className="container">
-                                <h2>Personal Data</h2>
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th>No Fear Act Completion Progress</th>
-                                            <th>No Fear Act Completion Date</th>
-                                            <th>Records Management Completion Progress</th>
-                                            <th>Records Management Completion Date</th>
-                                            <th>STINFO Completion Progress</th>
-                                            <th>STINFO Completion Date</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>{userData.nofearProgress}</td>
-                                            <td>{userData.nofearCompletionTime.seconds === 0 ? "Not Completed" : new Date(userData.nofearCompletionTime.seconds * 1000).toLocaleString()}</td>
-                                            <td>{userData.recordsProgress}</td>
-                                            <td>{userData.recordsCompletionTime.seconds === 0 ? "Not Completed" : new Date(userData.recordsCompletionTime.seconds * 1000).toLocaleString()}</td>
-                                            <td>{userData.stinfoProgress}</td>
-                                            <td>{userData.stinfoCompletionTime.seconds === 0 ? "Not Completed" : new Date(userData.stinfoCompletionTime.seconds * 1000).toLocaleString()}</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <br></br>
-
-                            {userData.admin === true ? (
-                                <div>
+                        <div className="text">
+                            <h1>Welcome, {userData.firstName}</h1>
+                        </div>
+                        <div>
+                            {true === true ? (
+                                <div className="main-content">
                                     <div className="container">
-                                        <h2>All User's Data</h2>
+                                        <h2 style={{ textAlign: 'center' }}>All User's Data</h2>
                                         <table>
                                             <thead>
                                                 <tr>
                                                     <th>Name</th>
                                                     <th>Squadron</th>
                                                     <th>No Fear Act Completion Progress</th>
-                                                    <th>No Fear Act Completion Date</th>
                                                     <th>Records Management Completion Progress</th>
-                                                    <th>Records Management Completion Date</th>
                                                     <th>STINFO Completion Progress</th>
-                                                    <th>STINFO Completion Date</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                <tr>
+                                                    {/* This is temporary data, remove before Thursday */}
+                                                    <th>Nathan Ryan</th>
+                                                    <th>SWE Group</th>
+                                                    <th>Comlete</th>
+                                                    <th>In Progress</th>
+                                                    <th>Not Started</th>
+                                                </tr>
                                                 {allUserData && allUserData.map((user, key) => (
                                                     <tr key={key}>
                                                         <td>{user.lastName}, {user.firstName}</td>
@@ -113,20 +92,44 @@ function Dashboard(): JSX.Element {
                                     </div>
                                 </div>
                             ) : (
-                                <p>You're a regular user.</p>
+                                <div className="main-content">
+                                    <div className="container">
+                                        <h2 style={{ textAlign: 'center' }}>Personal Data</h2>
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th>No Fear Act Completion Progress</th>
+                                                    <th>Records Management Completion Progress</th>
+                                                    <th>STINFO Completion Progress</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    {/* This is temporary data, remove before Thursday */}
+                                                    <th>Complete</th>
+                                                    <th>In Progress</th>
+                                                    <th>Not Started</th>
+                                                    <td>{userData.nofearProgress}</td>
+                                                    <td>{userData.nofearCompletionTime.seconds === 0 ? "Not Completed" : new Date(userData.nofearCompletionTime.seconds * 1000).toLocaleString()}</td>
+                                                    <td>{userData.recordsProgress}</td>
+                                                    <td>{userData.recordsCompletionTime.seconds === 0 ? "Not Completed" : new Date(userData.recordsCompletionTime.seconds * 1000).toLocaleString()}</td>
+                                                    <td>{userData.stinfoProgress}</td>
+                                                    <td>{userData.stinfoCompletionTime.seconds === 0 ? "Not Completed" : new Date(userData.stinfoCompletionTime.seconds * 1000).toLocaleString()}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
                             )}
                         </div>
-
                     </>
                 ) : (
                     <div className="text">
-                        <p>Please log in to access the dashboard page</p>
+                        <h1>Please log in to view dashboard</h1>
                     </div>
                 )}
             </div>
-
         </>
-    );
+    );    
 }
-
 export default Dashboard;
