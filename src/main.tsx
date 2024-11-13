@@ -21,7 +21,7 @@ import ForgotPassword from './pages/ForgotPassword.tsx'
 const router = createBrowserRouter([
   {
   path: "/",
-  element: <><Navbar /><h1>Robbins Training Suite</h1></>,
+  element: <><Navbar /><h1 className="text">Robbins Training Suite</h1></>,
   },
   {
     path:"/dashboard",
@@ -37,19 +37,19 @@ const router = createBrowserRouter([
   },
   {
   path: "/stinfo",
-  element: <><Navbar /><h1>STINFO Training</h1><STINFO/></>,
+  element: <><Navbar /><h1 className="text">STINFO Training</h1><STINFO/></>,
   },
   {
     path: "/nofear",
-    element: <><Navbar /><h1>No Fear Act Training</h1><NoFearAct></NoFearAct></>
+    element: <><Navbar /><h1 className="text">No Fear Act Training</h1><NoFearAct></NoFearAct></>
   },
   {
     path: "/records",
-    element: <><Navbar /><h1>Records Management Training</h1><Records></Records></>,
+    element: <><Navbar /><h1 className="text">Records Management Training</h1><Records></Records></>,
   },
   {
   path: "/management",
-  element: <><Navbar /><h1>Management</h1></>,
+  element: <><Navbar /><h1 className="text">Management</h1></>,
   },
   {
     path:"/profile",

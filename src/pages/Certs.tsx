@@ -4,6 +4,7 @@ import { auth, database } from "../firebase.ts";
 import { collection, getDocs, DocumentData } from "firebase/firestore";
 import { getUserData } from "../components/firestoreUtils.tsx";
 import "../components/certs.css"
+import "../components/dashboard.css"
 import { Timestamp } from "firebase/firestore";
 import DownloadCertificate from "../components/DownloadCertificate.tsx";
 import ViewCertificate from "../components/ViewCertificate.tsx";
@@ -73,57 +74,55 @@ function Certs() {
 
     }
 
-
     return (
         <>
             <Navbar />
             <div>
-                <h1>Certificates</h1>
-            </div>
-            <div>
                 {userData ? (
                     <>
-                        <div style={{ textAlign: 'center' }}>
-                            <h2>Name: {userData.firstName} {userData.lastName}</h2>
+                        <div className="text">
+                            <h1>Certificates</h1>
+                            <h2>Welcome, {userData.firstName}</h2>
                         </div>
-                        <div className="cert-container">
-                            <table className="cert-table">
-                                <thead>
-                                    <tr>
-                                        <th className="cert-th">Certificate ID</th>
-                                        <th className="cert-th">Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {certsData.map((cert) => (
-                                        <tr className="cert-tr" key={cert.id}>
-                                            <td className="cert-td">{cert.id}</td>
-                                            <td className="cert-td">
-                                                <DownloadCertificate
-                                                    firstName={cert.firstName}
-                                                    lastName={cert.lastName}
-                                                    courseName={cert.courseName}
-                                                    completionDate={cert.completionDate}
-                                                    userEmail={cert.userEmail}
-                                                />
-                                            </td>
+                        <div className="main-content">
+                            <div className="container">
+                                <h2 style={{ textAlign: 'center' }}>Certificates</h2>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Certificate ID</th>
+                                            <th>Actions</th>
                                         </tr>
-                                    ))}
+                                    </thead>
+                                    <tbody>
+                                        {certsData.map((cert) => (
+                                            <tr key={cert.id}>
+                                                <td>{cert.id}</td>
+                                                <td>
+                                                    <DownloadCertificate
+                                                        firstName={cert.firstName}
+                                                        lastName={cert.lastName}
+                                                        courseName={cert.courseName}
+                                                        completionDate={cert.completionDate}
+                                                        userEmail={cert.userEmail}
+                                                    />
+                                                </td>
+                                            </tr>
+                                        ))}
 
-                                </tbody>
-                            </table>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </>
                 ) : (
                     <div className="text">
-                        <p>Sign In To Access Your Certificates</p>
+                        <h1>Certificates</h1>
+                        <h2>Please log in to view certificates</h2>
                     </div>
                 )}
             </div>
         </>
-
-
     )
 }
-
 export default Certs;

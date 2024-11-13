@@ -8,6 +8,16 @@
   background-color: white; /* Changed background to white */
 }
 
+.text {
+  margin-left: 250px;
+  width: calc(100% - 250px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 20vh;
+}
+
 body {
   margin: 0;
   padding: 0;
