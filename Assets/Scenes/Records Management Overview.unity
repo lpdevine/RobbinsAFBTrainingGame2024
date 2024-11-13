@@ -266,7 +266,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.00021362305, y: 0.00079345703}
   m_SizeDelta: {x: 844.5, y: 401.65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &57920635
@@ -289,14 +289,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\nAm I responsible for records?\n\nAll military, civilians, and contractors
-    are considered users and have the\nresponsibility to create and maintain Air
-    Force records, which are considered to be federal records.\n\nIf federal records
-    are illegally removed from government custody, unlawfully changed, or destroyed,
-    you can be subject to fines, imprisonment, and penalties per Title 18 United
-    States Code, Section 2071.\n\nFor questions contact\n\u2022 Your Unit POCs\n\u2022
-    Commanders\n\u2022 Records Inventory Managers (RIMs)\n\u2022 Base Records Manager
-    (BRM)"
+  m_text: "Export Control Marking\r\n\nData subject to export control IAW\r\n\u2022
+    International Traffic in Arms regulations (ITAR)\r\n\u2022 Export Administration
+    Act (EAR)\r\n\u2022 United States Munitions List (USML)\r\n\u2022 Commerce Control
+    List (CCL)\r\n\nMust have an Export Control Warning Statement Label\n\nExport
+    Control Violations\r\nUnder ITAR, penalties are up to 2 years imprisonment and/or
+    $100,000 fine\r\nUnder EAR, penalties are up to 10 years imprisonment and/or
+    $250,000 fine\r\n\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2960,7 +2959,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.00021362305, y: 0.00079345703}
   m_SizeDelta: {x: 844.5, y: 401.65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &488425295
@@ -2983,14 +2982,18 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\nElectronic Data\nE-mail, electronic documents, databases and records
-    in automated\ninformation systems,\nWeb 2.0 technology or social media, generated
-    by processes and\nprescribed in Air Force\nPublications are Air Force records
-    and must be maintained IAW records\nmanagement requirements\n\nCommon IT Systems\n\u2022
-    MICT\n\u2022 TBA\n\u2022 Leave web\n\u2022 Recorded Defense Connect Online and\n\u2022
-    Defense Collaboration Services sessions\nElectronic records are the media of
-    choice for use, storage and\nmaintenance per AF Records Management, Policy and
-    Office of\nManagement and Budget Memorandum M-12-18, Managing\nGovernment Records."
+  m_text: "Impact of Unauthorized STINFO Distribution can cause damage to U.S. national
+    interest and security, defense programs/DoD investment, and defense contractor
+    Intellectual Property rights. Advanced DoD/military technology information made
+    available to adversaries compromises U.S. military advantage.\r\n\r\nThe controlling
+    DoD office (CDO) is the office that:\r\n\u2022 Creates (or procures) or is consigned
+    the document\r\n\u2022 Decides appropriate audience for secondary distribution
+    & applies statement\r\n\u2022 Applies distribution statement markings to control
+    STINFO\r\n\u2022 Reviews & decides on distribution to requesters outside the
+    distribution statement audience\r\n\u2022 Is responsible for deciding if/when
+    to change the distribution statement & changing, or instructing necessary marking
+    changes/corrections\r\n\u2022 Includes: SW Personnel, Equipment Specialists,
+    Engineers, TO Managers, & Liaisons\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3694,7 +3697,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.00021362305, y: 0.00079345703}
   m_SizeDelta: {x: 844.5, y: 401.65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &637677169
@@ -3717,47 +3720,16 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '
-
-    Discovery
-
-
-    Definition: Discovery is the obligation of parties
-    to a lawsuit to exchange information.
-
-    The number of litigation hold/record
-    searches involving the Air Force continues to
-
-    increase. Therefore, you may
-    be involved in a search for responsive information, to
-
-    include records in
-    your workspace, government desktop/laptop computer, and
-
-    government email
-    accounts.
-
-
-    Exchanging electronically stored information (ESI) as part of
-    the discovery process
-
-    is called "eDiscovery" as covered by the Federal Rules
-    of Civil Procedure.
-
-    The duty to preserve ESI is an issue of growing importance
-    given the rise of
-
-    electronic documents in virtually all organizations.
-
-
-    When
-    the local Records Professional or managing attorney requires you to conduct
-
-    a
-    search for information responsive to the request, by the suspense date and using
-
-    the
-    provided search terms, you are required to perform a search of all information'
+  m_text: "Types of Intellectual Property Rights\r\n\u2022\tUnlimited rights\r\n\u2022\tLimited
+    rights\r\n\u2022\tGovernment purpose rights\r\n\u2022\tRestricted rights\r\n\u2022\tSpecially
+    negotiated rights\r\n\u2022\tSmall business innovation and research rights\r\n\r\nDistribution
+    Statements Assigned to IP\r\nDissemination of STINFO that is owned by a non-government
+    entity and that is protected by a\r\ncontractor\u2019s Limited Rights Statement
+    (LRS) or other agreement is restricted to Distribution\r\nStatements B, E, or
+    F\r\n\u2022DoD components only \u2013 Distribution Statement E\r\n\u2022U.S.
+    Government Agencies only \u2013 Distribution Statement B, or\r\n\u2022Recipients
+    as directed by the Controlling DoD Office (CDO) or higher DoD authority \u2013\r\nDistribution
+    Statement F.\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3868,7 +3840,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.00021362305, y: 0.00079345703}
   m_SizeDelta: {x: 844.5, y: 401.65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &639478403
@@ -4271,7 +4243,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.00021362305, y: 0.00079345703}
   m_SizeDelta: {x: 844.5, y: 401.65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &713276158
@@ -4294,14 +4266,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\nWhat are Air Force Records?\n\nAir Force records are recorded information
-    that serves as evidence\nof the activities of the Air Force and documents the
-    Air Force's\ntransaction of public business, that is, the activities necessary
-    for\nthe proper performance of our functions to support and carry out\nthe Air
-    Force mission. Records are media neutral.\n\nExamples of Records\n\u2022 G-Series
-    Orders\n\u2022 Drug Testing Rosters\n\u2022 Budget Development\n\u2022 Personnel
-    Information File\n\u2022 Government Impact Program\n\u2022 Delegation/Designation
-    (Appointment) Letters\n\u2022 Directives, Instructions, Manuals, Supplements"
+  m_text: 'STINFO Create by AFSC
+
+
+    [insert table here]'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4829,7 +4797,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.00021362305, y: 0.00079345703}
   m_SizeDelta: {x: 844.5, y: 401.65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &787546462
@@ -4852,15 +4820,21 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\nESI Examples\n\nE-mails\n\u2022 Voicemails\n\u2022 Instant messages\n\u2022
-    Audio files and other types of digital data\n\u2022 Stored data on:\n- Handheld
-    devices and backup tapes\n- External hard disk drives\n- CDs, DVDs, and old computers\n\nThis
-    includes a search of paper, non-electronic documentation, or ESI within the\nworkspace,
-    government-provided computer, government email accounts, Outlook\npst files,
-    shared network drive, SharePoint sites, and so on; then, suspend the usual records
-    disposition until the Air Force attorney contacts you.\n\nImmediately move relevant
-    information to a secure location so it is not subject to\nover-writing, archiving,
-    or destruction. Work with your Record Professionals for\nfurther guidance."
+  m_text: "CDO Liaisons Roles and Responsibilities\r\n\u2022\tCOMPLETE APPROPRIATE
+    STINFO TRAINING ANNUALLY TO MAINTAIN CURRENCY AND EXPERTISE\r\n\u2022\tADVISE
+    CDO ON PROPER STINFO MARKING DISTRIBUTION AND STORAGE IAW AFI 61-201.\r\n\u2022\tADVISE
+    CDO ON REQUIREMENTS AND PROCESS TO HAVE STINFO REVIEWED AND CLEARED BY PA FOR
+    PUBLIC RELEASE.\r\n\u2022\tINFORM AND REPORT TO CDO ANY STINFO PROGRAM VIOLATIONS
+    AND DEFICIENCIES\r\n\u2022\tASSIST CDOS IN IDENTIFYING DATA RIGHTS, APPROPRIATE
+    DISTRIBUTION STATEMENTS, AND OTHER APPLICABLE MARKINGS\r\n\u2022\tEVALUATE CDO
+    STINFO ACTIVITIES TO ASSURE POLICY COMPLIANCE\r\n\u2022\tWILL BE MEMBER OF THE
+    STINFO WORKING GROUP DEFINED BY CHARTER\r\n\r\nDestroying Unclassified STINFO
+    Documents\r\n\u2022\tPaper documents \u2013 shredding or burning only\r\n\u2022\tFloppy
+    disks \u2013 reformatting and breaking into four or more pieces\r\n\u2022\tHard
+    drives \u2013 reformatting and sending to a recycling center\r\n\u2022\tCD-ROMS/DVDs
+    \u2013 shredding or breaking into 4 or more pieces\r\n\u2022\tFlash drives \u2013
+    deleting files from memory and breaking into two or more pieces\r\n\u2022\tMagnetic
+    tape \u2013 deleting the files and sending to a recycling center\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6320,7 +6294,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 87}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1277820898
 MonoBehaviour:
@@ -6540,8 +6514,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: MAIN MENU
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8e0f2eb9da0644f238a63f02da0c13fc, type: 2}
-  m_sharedMaterial: {fileID: 2805994301032696971, guid: 8e0f2eb9da0644f238a63f02da0c13fc, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -7288,7 +7262,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.00021362305, y: 0.00079345703}
   m_SizeDelta: {x: 844.5, y: 401.65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1478343510
@@ -7311,38 +7285,15 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '
-
-    Social Media as an Air force Record
-
-
-    Social media includes
-    activities that integrate web technology,
-
-    social interaction, and user-generated
-    content.
-
-    Agencies use social media to connect people to the Government
-
-    and
-    to share information. These new platforms support business
-
-    processes that
-    both create and manage content.
-
-
-    The principles for analyzing, scheduling,
-    and managing records are
-
-    based on content and are independent of the medium.
-    Where and
-
-    how an Airman creates, uses, or stores information for Air Force
-
-    business
-    does not automatically exclude it from Air Force Records
-
-    Management.'
+  m_text: "Two categories of STINFO distribution\r:\n1. Primary: From the Controlling
+    DoD Office. The distribution of or access to technical documents authorized by
+    the controlling DoD office. The CDO can distribute to anyone it determines is
+    eligible to receive.\r\n2. Secondary: Release of technical documents provided
+    after primary distribution by the originator or controlling office. It includes
+    loaning, allowing the reading of, or releasing a document outright, in whole,
+    or in part. Distribution by anyone other than the CDO. These personnel must adhere
+    to the distribution statement or contact the CDO for approval to distribute outside
+    the distribution statement.\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -7688,7 +7639,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.00021362305, y: 0.00079345703}
   m_SizeDelta: {x: 844.5, y: 401.65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1537920015
@@ -7711,14 +7662,17 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\nAm I responsible for records?\n\nAll military, civilians, and contractors
-    are considered users and have the\nresponsibility to create and maintain Air
-    Force records, which are considered to be federal records.\n\nIf federal records
-    are illegally removed from government custody, unlawfully changed, or destroyed,
-    you can be subject to fines, imprisonment, and penalties per Title 18 United
-    States Code, Section 2071.\n\nFor questions contact\n\u2022 Your Unit POCs\n\u2022
-    Commanders\n\u2022 Records Inventory Managers (RIMs)\n\u2022 Base Records Manager
-    (BRM)"
+  m_text: "Where to Mark STINFO Documents\r\n\nDVD-ROM with case: Distribution Statement
+    is placed on both the DVD and the case.\r\nPresentation: A distribution statement
+    and export control warning notice, if applicable, must be on each slide in a
+    presentation\r\nDocument: Distribution statements must be placed on a conspicuous
+    location on the cover, title page, or on the front page. A distribution statement
+    must appear on each printed page of a digitally stored document.\r\nEngineering
+    Drawings: Distribution Statement must be on all single-sheet drawings and associated
+    lists, an on sheet one of multi-sheet documents.\r\n\r\nAFI 61-201, paragraph
+    1.3.4.13 states:\r\n\"Protect STINFO documents by encryption when transmitting
+    via email\r\"\n\nConsider sing Army AMRDEC SAFE\r\nfile exchange to send STINFO
+    files.\r\nhttps://safe.apps.mil/\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -7991,7 +7945,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.00021362305, y: 0.00079345703}
   m_SizeDelta: {x: 844.5, y: 401.65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1616694924
@@ -8014,15 +7968,22 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\nAir Force Records and Social Media\n\nTo determine if your social media
-    content is a federal record, answer\nthese questions:\n\u2022 Does it contain
-    evidence of an Air Force policy, business, mission, etc.?\n\u2022 Is the information
-    unique and not available anywhere else?\n\u2022 Is this tool being used in relation
-    to the Air Force's work?\n\u2022 Is use of the tool authorized by the Air Force?\n\u2022
-    Is there a business need for the information?\n\nIf you can answer \"Yes\" to
-    any of these questions, it is likely a federal record.\n\nYou should record a
-    copy or screen shot and save in the unit's inventory as an official Air Force
-    record."
+  m_text: "Authorized Distribution Statements\r\n\u2022 DISTRIBUTION STATEMENT A:
+    Approved for public release; distribution is unlimited (Before any STINFO can
+    be marked with this statement, it must be reviewed and approved by the Public
+    Affairs Office)\r\n\u2022 DISTRIBUTION STATEMENT B: Distribution authorized to
+    U.S. Government Agencies only (reason), (date of determination). Refer other
+    requests for this document to (controlling DoD office)\r\n\u2022 DISTRIBUTION
+    STATEMENT C: Distribution authorized to U.S. Government Agencies and their contractors
+    (reason), (date of determination). Other requests for this document shall be
+    referred to (controlling DoD office).\r\n\u2022 DISTRIBUTION STATEMENT D: Distribution
+    authorized to DoD and U.S. DoD contractors only (reason), (date of determination).
+    Other requests for this document shall be referred to (controlling DoD office).\r\n\u2022
+    DISTRIBUTION STATEMENT E: Distribution authorized to DoD components only (reason),
+    (date of determination). Other requests for this document shall be referred to
+    (controlling DoD office).\r\n\u2022 DISTRIBUTION STATEMENT F: Further dissemination
+    only as directed by (controlling DoD office), (date of determination) or higher
+    DoD authority.\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -8049,10 +8010,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
+  m_fontSize: 19.4
   m_fontSizeBase: 20
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
