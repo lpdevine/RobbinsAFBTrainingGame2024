@@ -49,10 +49,11 @@ function Dashboard(): JSX.Element {
                 {userData ? (
                     <>
                         <div className="text">
-                            <h1>Welcome, {userData.firstName}</h1>
+                            <h1>Dashboard</h1>
+                            <h2>Welcome, {userData.firstName}</h2>
                         </div>
                         <div>
-                            {true === true ? (
+                            {userData.admin === true ? (
                                 <div className="main-content">
                                     <div className="container">
                                         <h2 style={{ textAlign: 'center' }}>All User's Data</h2>
@@ -80,11 +81,8 @@ function Dashboard(): JSX.Element {
                                                         <td>{user.lastName}, {user.firstName}</td>
                                                         <td>{user.squadron}</td>
                                                         <td>{user.nofearProgress}</td>
-                                                        <td>{user.nofearCompletionTime.seconds === 0 ? "Not Completed" : new Date(user.nofearCompletionTime.seconds * 1000).toLocaleString()}</td>
                                                         <td>{user.recordsProgress}</td>
-                                                        <td>{user.recordsCompletionTime.seconds === 0 ? "Not Completed" : new Date(user.recordsCompletionTime.seconds * 1000).toLocaleString()}</td>
                                                         <td>{user.stinfoProgress}</td>
-                                                        <td>{user.stinfoCompletionTime.seconds === 0 ? "Not Completed" : new Date(user.stinfoCompletionTime.seconds * 1000).toLocaleString()}</td>
                                                     </tr>
                                                 ))}
                                             </tbody>
@@ -105,16 +103,9 @@ function Dashboard(): JSX.Element {
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    {/* This is temporary data, remove before Thursday */}
-                                                    <th>Complete</th>
-                                                    <th>In Progress</th>
-                                                    <th>Not Started</th>
                                                     <td>{userData.nofearProgress}</td>
-                                                    <td>{userData.nofearCompletionTime.seconds === 0 ? "Not Completed" : new Date(userData.nofearCompletionTime.seconds * 1000).toLocaleString()}</td>
                                                     <td>{userData.recordsProgress}</td>
-                                                    <td>{userData.recordsCompletionTime.seconds === 0 ? "Not Completed" : new Date(userData.recordsCompletionTime.seconds * 1000).toLocaleString()}</td>
                                                     <td>{userData.stinfoProgress}</td>
-                                                    <td>{userData.stinfoCompletionTime.seconds === 0 ? "Not Completed" : new Date(userData.stinfoCompletionTime.seconds * 1000).toLocaleString()}</td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -125,7 +116,8 @@ function Dashboard(): JSX.Element {
                     </>
                 ) : (
                     <div className="text">
-                        <h1>Please log in to view dashboard</h1>
+                        <h1>Dashboard</h1>
+                        <h2>Please log in to view dashboard</h2>
                     </div>
                 )}
             </div>
