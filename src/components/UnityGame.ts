@@ -14,10 +14,10 @@ interface BuildContext{
 function GetBuildContext(buildName:string) : BuildContext{
 
   const { unityProvider, sendMessage, addEventListener, removeEventListener  } = useUnityContext({
-    loaderUrl:    "/" + buildName + "/build.loader.js",
-    dataUrl:      "/" + buildName + "/build.data.unityweb",
-    frameworkUrl: "/" + buildName + "/build.framework.js.unityweb",
-    codeUrl:      "/" + buildName + "/build.wasm.unityweb",
+    loaderUrl:    "/" + buildName + "/UnityBuild.loader.js",
+    dataUrl:      "/" + buildName + "/UnityBuild.data.unityweb",
+    frameworkUrl: "/" + buildName + "/UnityBuild.framework.js.unityweb",
+    codeUrl:      "/" + buildName + "/UnityBuild.wasm.unityweb",
   });
 
   const buildContext : BuildContext = { unityProvider: unityProvider, sendMessage: sendMessage, addEventListener: addEventListener, removeEventListener: removeEventListener }
