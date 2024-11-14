@@ -1,40 +1,51 @@
-.text {
+.main-content {
+    margin-left: 250px;
+    width: calc(100% - 250px);
+    height: 100vh;
     display: flex;
     justify-content: center;
-}
-.cert-container {
-    width: 80%; /* Adjust the width as needed */
-    margin: 0 auto; /* Center the container horizontally */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow effect */
-    padding: 20px; /* Add padding around the container */
-    border-radius: 10px;
-    padding-top: 5px;
-    background-color: rgba(66, 50, 50, 0.45);
+    justify-content: top;
 }
 
-.cert-table {
+.container {
+    width: 60%;
+    max-width: 1200px;
+    max-height: fit-content;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    background-color: rgb(0, 37, 84);
+}
+
+.text {
+    margin-left: 250px;
+    width: calc(100% - 250px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20vh;
+}
+
+table {
     width: 100%;
     border-collapse: collapse;
+    background-color: rgb(0, 37, 84);
 }
 
-.cert-th,
-.cert-td {
+.table-name {
+    text-align: center;
+    color: rgb(255, 255, 255);
+    background-color: rgb(0, 37, 84);
+}
+
+.td {
     padding: 10px;
     text-align: center;
+    background-color: rgb(178, 180, 178);
+    border-top-style: solid;
 }
 
-.cert-th {
-    background-color: #1b1818;
-    color: #ffffff;
-}
-
-.cert-tr:nth-child(even) {
-    background-color: #1b1818;
-}
-
-/* Style progress values */
-.cert-td:nth-child(3)::after,
-.cert-td:nth-child(5)::after,
-.cert-td:nth-child(7)::after {
-    content: '%';
+.th {
+    background-color: rgb(255, 199, 44);
+    color: #000000;
 }
