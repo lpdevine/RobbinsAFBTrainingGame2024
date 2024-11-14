@@ -266,7 +266,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.00079345703, y: 0.00035095215}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 844.5, y: 401.65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &57920635
@@ -289,11 +289,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Export Control Marking\r\n\nData subject to export control IAW\r\n\u2022
+  m_text: "EXPORT CONTROL MARKING\n\nData subject to export control IAW\r\n\u2022
     International Traffic in Arms regulations (ITAR)\r\n\u2022 Export Administration
     Act (EAR)\r\n\u2022 United States Munitions List (USML)\r\n\u2022 Commerce Control
-    List (CCL)\r\n\nMust have an Export Control Warning Statement Label\n\nExport
-    Control Violations\r\nUnder ITAR, penalties are up to 2 years imprisonment and/or
+    List (CCL)\r\nMust have an Export Control Warning Statement Label\n\n\nEXPORT
+    CONTROL VIOLATIONS\n\nUnder ITAR, penalties are up to 2 years imprisonment and/or
     $100,000 fine\r\nUnder EAR, penalties are up to 10 years imprisonment and/or
     $250,000 fine\r\n\n"
   m_isRightToLeft: 0
@@ -1208,7 +1208,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1921855556}
   m_Direction: 0
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.9991696
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1609,8 +1609,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1674653316}
   m_HandleRect: {fileID: 1674653315}
   m_Direction: 2
-  m_Value: 0
-  m_Size: 1
+  m_Value: 1
+  m_Size: 0.9992019
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2136,7 +2136,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1116130402}
   m_Direction: 0
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.9991696
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2262,7 +2262,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 612049748}
   m_Direction: 0
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.9991696
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2959,7 +2959,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.00079345703, y: 0.00035095215}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 844.5, y: 401.65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &488425295
@@ -3020,8 +3020,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 19
+  m_fontSizeBase: 19
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3349,7 +3349,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 636687520}
   m_Direction: 0
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.9991696
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3697,7 +3697,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.00079345703, y: 0.00035095215}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 844.5, y: 401.65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &637677169
@@ -3720,16 +3720,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Types of Intellectual Property Rights\r\n\u2022\tUnlimited rights\r\n\u2022\tLimited
-    rights\r\n\u2022\tGovernment purpose rights\r\n\u2022\tRestricted rights\r\n\u2022\tSpecially
-    negotiated rights\r\n\u2022\tSmall business innovation and research rights\r\n\r\nDistribution
-    Statements Assigned to IP\r\nDissemination of STINFO that is owned by a non-government
-    entity and that is protected by a\r\ncontractor\u2019s Limited Rights Statement
-    (LRS) or other agreement is restricted to Distribution\r\nStatements B, E, or
-    F\r\n\u2022DoD components only \u2013 Distribution Statement E\r\n\u2022U.S.
-    Government Agencies only \u2013 Distribution Statement B, or\r\n\u2022Recipients
-    as directed by the Controlling DoD Office (CDO) or higher DoD authority \u2013\r\nDistribution
-    Statement F.\r\n"
+  m_text: "TYPES OF INTELLECTUAL PROPERTY RIGHTS\r\n\u2022 Unlimited rights\r\n\u2022
+    Limited rights\r\n\u2022 Government purpose rights\r\n\u2022 Restricted rights\r\n\u2022
+    Specially negotiated rights\r\n\u2022 Small business innovation and research
+    rights\r\n\r\n\r\nDISTRIBUTIONS STATEMENTS ASSIGNED TO IP\r\n\r\nDissemination
+    of STINFO that is owned by a non-government entity and that is protected by a
+    contractor\u2019s Limited Rights Statement or other agreement is restricted to
+    Distribution Statements B, E, or F."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3840,7 +3837,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.00079345703, y: 0.00035095215}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 844.5, y: 401.65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &639478403
@@ -4039,8 +4036,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 478344513}
   m_HandleRect: {fileID: 478344512}
   m_Direction: 2
-  m_Value: 0
-  m_Size: 1
+  m_Value: 1
+  m_Size: 0.9992019
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4165,8 +4162,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1958555615}
   m_HandleRect: {fileID: 1958555614}
   m_Direction: 2
-  m_Value: 0
-  m_Size: 1
+  m_Value: 1
+  m_Size: 0.9992019
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4243,7 +4240,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.00079345703, y: 0.00035095215}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 844.5, y: 401.65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &713276158
@@ -4266,10 +4263,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'STINFO CREATED BY AFSC
-
-
-    [insert table here]'
+  m_text: "STINFO CREATED BY AFSC\n\nTOs (Technical Orders)\nCDO: 448 SCMW\nRepository:
+    ETIMS & TO remote\n\nPOs (Process Orders)\nCDOs: Maintenance & 448 SCMW\nRepository:
+    PODDS\n\nSW Doc\t\t\t\t        Tech Data Packages\nCDO: SMXG\t\t\t         CDO:
+    SMXG\nRepository: SW Control Center\t         Repository: PRPS\n\nTDIP Documents\t\t\t     
+    Engineering Drawings\nCDO: AFSV/EN\t\t\t\tCDO: Mx groups\nRepository: DTIC\t\t\t      
+    Repository: JEDMICS\n\nBriefings\nCDO: AFSC\nRepository: ERMS"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4296,10 +4295,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
+  m_fontSize: 18
   m_fontSizeBase: 20
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
@@ -4428,8 +4427,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2146655718}
   m_HandleRect: {fileID: 2146655717}
   m_Direction: 2
-  m_Value: 0
-  m_Size: 1
+  m_Value: 1
+  m_Size: 0.9992019
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4555,7 +4554,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 144634020}
   m_Direction: 0
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.9991696
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4797,7 +4796,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.00079345703, y: 0.00035095215}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 844.5, y: 401.65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &787546462
@@ -4820,21 +4819,19 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "CDO Liaisons Roles and Responsibilities\r\n\u2022\tCOMPLETE APPROPRIATE
-    STINFO TRAINING ANNUALLY TO MAINTAIN CURRENCY AND EXPERTISE\r\n\u2022\tADVISE
-    CDO ON PROPER STINFO MARKING DISTRIBUTION AND STORAGE IAW AFI 61-201.\r\n\u2022\tADVISE
-    CDO ON REQUIREMENTS AND PROCESS TO HAVE STINFO REVIEWED AND CLEARED BY PA FOR
-    PUBLIC RELEASE.\r\n\u2022\tINFORM AND REPORT TO CDO ANY STINFO PROGRAM VIOLATIONS
-    AND DEFICIENCIES\r\n\u2022\tASSIST CDOS IN IDENTIFYING DATA RIGHTS, APPROPRIATE
-    DISTRIBUTION STATEMENTS, AND OTHER APPLICABLE MARKINGS\r\n\u2022\tEVALUATE CDO
-    STINFO ACTIVITIES TO ASSURE POLICY COMPLIANCE\r\n\u2022\tWILL BE MEMBER OF THE
-    STINFO WORKING GROUP DEFINED BY CHARTER\r\n\r\nDestroying Unclassified STINFO
-    Documents\r\n\u2022\tPaper documents \u2013 shredding or burning only\r\n\u2022\tFloppy
-    disks \u2013 reformatting and breaking into four or more pieces\r\n\u2022\tHard
-    drives \u2013 reformatting and sending to a recycling center\r\n\u2022\tCD-ROMS/DVDs
-    \u2013 shredding or breaking into 4 or more pieces\r\n\u2022\tFlash drives \u2013
-    deleting files from memory and breaking into two or more pieces\r\n\u2022\tMagnetic
-    tape \u2013 deleting the files and sending to a recycling center\r\n"
+  m_text: "CDO LIAISONS ROLES & RESPONSIBILITIES\n\u2022 Complete STINFO training
+    annually\n\u2022 Advise CDO on proper STINFO marking distribution & storage\n\u2022
+    Advise CDO on requirements & process to have STINFO reviewed and cleared by PA
+    for public release.\n\u2022 Inform & report to CDO any STINFO program violations
+    & deficiencies\n\u2022 Assist CDOs in identifying data rights, appropriate distribution
+    statements, & other applicable markings\n\u2022 Evaluate CDO STINFO activities
+    to assure policy compliance\r\r\n\r\nDESTROYING UNCLASSIFIED STINFO DOCUMENTS\n\u2022
+    Paper documents \u2013 shredding or burning only\r\n\u2022 Floppy disks \u2013
+    reformatting and breaking into four or more pieces\r\n\u2022 Hard drives \u2013
+    reformatting and sending to a recycling center\r\n\u2022 CD-ROMS/DVDs \u2013
+    shredding or breaking into 4 or more pieces\r\n\u2022 Flash drives \u2013 deleting
+    files from memory and breaking into two or more pieces\r\n\u2022 Magnetic tape
+    \u2013 deleting the files and sending to a recycling center\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4861,8 +4858,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 19
+  m_fontSizeBase: 19
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -5543,8 +5540,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2046090518}
   m_HandleRect: {fileID: 2046090517}
   m_Direction: 2
-  m_Value: 0
-  m_Size: 1
+  m_Value: 1
+  m_Size: 0.9992019
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -5863,7 +5860,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 831313479}
   m_Direction: 0
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.9991696
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -6878,7 +6875,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 774949054}
   m_Direction: 0
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.9991696
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -7149,7 +7146,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 500675295}
   m_Direction: 0
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.9991696
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -7262,7 +7259,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.00079345703, y: 0.00035095215}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 844.5, y: 401.65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1478343510
@@ -7561,8 +7558,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1942440375}
   m_HandleRect: {fileID: 1942440374}
   m_Direction: 2
-  m_Value: 0
-  m_Size: 1
+  m_Value: 1
+  m_Size: 0.9992019
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -7639,7 +7636,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.00079345703, y: 0.00035095215}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 844.5, y: 401.65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1537920015
@@ -7662,17 +7659,15 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Where to Mark STINFO Documents\r\n\nDVD-ROM with case: Distribution Statement
-    is placed on both the DVD and the case.\r\nPresentation: A distribution statement
-    and export control warning notice, if applicable, must be on each slide in a
-    presentation\r\nDocument: Distribution statements must be placed on a conspicuous
-    location on the cover, title page, or on the front page. A distribution statement
-    must appear on each printed page of a digitally stored document.\r\nEngineering
-    Drawings: Distribution Statement must be on all single-sheet drawings and associated
-    lists, an on sheet one of multi-sheet documents.\r\n\r\nAFI 61-201, paragraph
-    1.3.4.13 states:\r\n\"Protect STINFO documents by encryption when transmitting
-    via email\r\"\n\nConsider sing Army AMRDEC SAFE\r\nfile exchange to send STINFO
-    files.\r\nhttps://safe.apps.mil/\r\n"
+  m_text: "MARKING STINFO\n\nDVD-ROM with case: Distribution Statement is placed
+    on both the DVD and the case.\r\n\nPresentation: A distribution statement and
+    export control warning notice, if applicable, must be on each slide in a presentation\r\n\nDocument:
+    Distribution statements must be placed on a conspicuous location on the cover,
+    title page, or on the front page. A distribution statement must appear on each
+    printed page of a digitally stored document.\r\n\nEngineering Drawings: Distribution
+    Statement must be on all single-sheet drawings and associated lists, an on sheet
+    one of multi-sheet documents.\r\n\r\nProtect with encryption when transmitting
+    via email\r.\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -7945,7 +7940,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.00079345703, y: 0.00035095215}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 844.5, y: 401.65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1616694924
@@ -7968,12 +7963,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Authorized Distribution Statements\r\n\u2022 DISTRIBUTION STATEMENT A:
+  m_text: "AUTHORIZED DISTRIBUTION STATEMENTS\n\n\u2022 DISTRIBUTION STATEMENT A:
     Approved for public release; distribution is unlimited (Before any STINFO can
     be marked with this statement, it must be reviewed and approved by the Public
     Affairs Office)\r\n\u2022 DISTRIBUTION STATEMENT B: Distribution authorized to
     U.S. Government Agencies only (reason), (date of determination). Refer other
-    requests for this document to (controlling DoD office)\r\n\u2022 DISTRIBUTION
+    requests for this document to (controlling DoD office)\r.\n\u2022 DISTRIBUTION
     STATEMENT C: Distribution authorized to U.S. Government Agencies and their contractors
     (reason), (date of determination). Other requests for this document shall be
     referred to (controlling DoD office).\r\n\u2022 DISTRIBUTION STATEMENT D: Distribution
@@ -8010,10 +8005,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 19.4
-  m_fontSizeBase: 20
+  m_fontSize: 17
+  m_fontSizeBase: 17
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
@@ -8715,8 +8710,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2129106865}
   m_HandleRect: {fileID: 2129106864}
   m_Direction: 2
-  m_Value: 0
-  m_Size: 1
+  m_Value: 1
+  m_Size: 0.9992019
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -9219,7 +9214,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1741869455}
   m_Direction: 0
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.9991696
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -9769,8 +9764,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 799992497}
   m_HandleRect: {fileID: 799992496}
   m_Direction: 2
-  m_Value: 0
-  m_Size: 1
+  m_Value: 1
+  m_Size: 0.9992019
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -9895,8 +9890,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1662044284}
   m_HandleRect: {fileID: 1662044283}
   m_Direction: 2
-  m_Value: 0
-  m_Size: 1
+  m_Value: 1
+  m_Size: 0.9992019
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

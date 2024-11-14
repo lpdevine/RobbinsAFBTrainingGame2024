@@ -48,10 +48,10 @@ public class DictionaryScene2 : MonoBehaviour
 
     private void PrepareTermsAndDefinitions()
     {
-        termsDefinitions.Add("Engineering Drawings repository", "JEDMICS (Joint Engineering Data Management Information and Control System)");
-        termsDefinitions.Add("CDO responsibility", "Decides appropriate audience for distribution & applies statement");
+        termsDefinitions.Add("Engineering Drawings repository", "JEDMICS");
+        termsDefinitions.Add("CDO responsibility", "Decides distribution statement");
         termsDefinitions.Add("Before any STINFO can be marked distribution statement A", "Must be approved by Public Affairs Office");
-        termsDefinitions.Add("Air Force Record", "Drug Testing Rosters");
+        termsDefinitions.Add("Distribution Statement E", "Distribution authorized to DoD components only");
 
         // Initialize more terms and definitions as needed here
         ShuffleAndAssignTerms();
