@@ -112,7 +112,7 @@ function Profile(): JSX.Element {
                                                 <tbody>
                                                     {allUserData && allUserData.map((user, key) => (
                                                         <tr key={key}>
-                                                            <td className="td">{user.lastName}, {user.firstName}</td>
+                                                            <td className="td">{user.lastName},<br></br>{user.firstName}</td>
                                                             <td className="td">{user.squadron}</td>
                                                             <td className="td">{user.email}</td>
                                                         </tr>

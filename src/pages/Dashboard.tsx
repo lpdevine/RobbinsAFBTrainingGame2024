@@ -118,7 +118,7 @@ function Dashboard(): JSX.Element {
                                             <tbody>
                                                 {allUserData && allUserData.map((user, key) => (
                                                     <tr key={key}>
-                                                        <td className="td">{user.lastName}, {user.firstName}</td>
+                                                        <td className="td">{user.lastName},<br></br>{user.firstName}</td>
                                                         <td className="td">{user.squadron}</td>
                                                         <td className="td">{user.nofearProgress}</td>
                                                         <td className="td">{user.recordsProgress}</td>
