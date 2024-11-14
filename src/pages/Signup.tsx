@@ -1,94 +1,137 @@
-import { Timestamp } from "firebase/firestore";
-import { SetDoc, GetDoc, auth } from "../firebase.ts";
-import { useState } from "react";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { useNavigate, Link } from "react-router-dom";
-import EmailPasswordForm from "../components/EmailPasswordForm.tsx";
-import "../components/components.css";
+// Signup.tsx
+
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import {
+  createUserWithEmailAndPassword,
+  UserCredential,
+  updateProfile,
+} from 'firebase/auth';
+import { doc, setDoc } from 'firebase/firestore';
+import { auth, database } from '../firebase'; // Adjust the import paths as needed
+import EmailPasswordForm from '../components/EmailPasswordForm'; // Adjust the import path
+
+interface SignUpFormData {
+  email: string;
+  password: string;
+  confirmPassword: string;
+  firstName: string;
+  lastName: string;
+  squadron: string;
+}
 
 function Signup() {
-    const [signupData, setSignupData] = useState({
-        password: "",
-        email: "",
-        squadron: "",
-        firstName: "",
-        lastName: ""
-    });
+  const [formData, setFormData] = useState<SignUpFormData>({
+    email: '',
+    password: '',
+    confirmPassword: '',
+    firstName: '',
+    lastName: '',
+    squadron: '',
+  });
+  const [errorMessage, setErrorMessage] = useState('');
+  const [showError, setShowError] = useState(false);
+  const navigate = useNavigate();
 
-    const [showError, setShowError] = useState(false);
-    const [errorMessage, setErrorMessage] = useState("");
-    const navigate = useNavigate();
+  // Handle input changes
+  function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) {
+    const { name, value } = e.target;
+    setFormData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  }
 
-    function handleChange(e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>) {
-        const { name, value } = e.target;
-        setSignupData(prevState => ({
-            ...prevState,
-            [name]: value
-        }));
+  // Handle form submission
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setErrorMessage('');
+    setShowError(false);
+
+    const { email, password, confirmPassword, firstName, lastName, squadron } = formData;
+
+    // Validate form inputs
+    if (password !== confirmPassword) {
+      setErrorMessage('Passwords do not match.');
+      setShowError(true);
+      return;
     }
 
-    async function handleSubmit(e: React.FormEvent) {
-        e.preventDefault();
-        setShowError(false);
-
-        try {
-            if ((await GetDoc("users/" + signupData.email)).exists()) {
-                setShowError(true);
-                setErrorMessage("Email taken!");
-                return;
-            }
-            if (!signupData.email.includes("@")) {
-                setShowError(true);
-                setErrorMessage("Email invalid!");
-                return;
-            }
-            if (signupData.password.length < 8) {
-                setShowError(true);
-                setErrorMessage("Password must contain more than 7 characters!");
-                return;
-            }
-
-            const userData = {
-                admin: false,
-                stinfoProgress: 0,
-                stinfoCompletionTime: new Timestamp(0, 0),
-                nofearProgress: 0,
-                nofearCompletionTime: new Timestamp(0, 0),
-                recordsProgress: 0,
-                recordsCompletionTime: new Timestamp(0, 0),
-                squadron: signupData.squadron,
-                firstName: signupData.firstName,
-                lastName: signupData.lastName
-            };
-
-            await createUserWithEmailAndPassword(auth, signupData.email, signupData.password);
-            await SetDoc(userData, "users/" + signupData.email);
-
-            console.log("SUCCESS: User created with email " + signupData.email);
-            navigate("/signin");
-        } catch (error) {
-            console.error("Error in signup:", error);
-            setShowError(true);
-            setErrorMessage("An error occurred while signing up. Please try again later.");
-        }
+    if (!email || !password || !firstName || !lastName || !squadron) {
+      setErrorMessage('Please fill in all required fields.');
+      setShowError(true);
+      return;
     }
 
-    return (
-        <div className="login-container">
-            <EmailPasswordForm
-                formType="signup"
-                title="Signup"
-                errorMessage={errorMessage}
-                showError={showError}
-                formData={signupData}
-                onSubmit={handleSubmit}
-                onInputChange={handleChange}
-                onSelectChange={handleChange}
-            />
-            <hr className="short-hr" />
-            <Link to="/signin" className="link">Already have an account?</Link>
-        </div>
-    );
+    try {
+      // Create user with Firebase Authentication
+      const userCredential: UserCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      const user = userCredential.user;
+
+      // Optionally update the user's display name
+      await updateProfile(user, {
+        displayName: `${firstName} ${lastName}`,
+      });
+
+      // Prepare user data according to your schema
+      const userData = {
+        firstName,
+        lastName,
+        email,
+        squadron,
+        admin: false, // Set default admin status
+        nofearCompletionTime: null,
+        recordsCompletionTime: null,
+        stinfoCompletionTime: null,
+        nofearProgress: 0,
+        recordsProgress: 0,
+        stinfoProgress: 0,
+      };
+
+      // Store user data in Firestore under 'users' collection with UID as the document ID
+      const userDocRef = doc(database, 'users', user.uid);
+      await setDoc(userDocRef, userData);
+
+      // Navigate to the dashboard or desired page
+      navigate('/dashboard');
+    } catch (error: any) {
+      // Handle Errors here
+      console.error('Error during sign-up:', error.code, error.message);
+      setShowError(true);
+
+      // Provide user-friendly error messages
+      if (error.code === 'auth/email-already-in-use') {
+        setErrorMessage('This email is already in use.');
+      } else if (error.code === 'auth/invalid-email') {
+        setErrorMessage('Invalid email address.');
+      } else if (error.code === 'auth/weak-password') {
+        setErrorMessage('Password is too weak. It should be at least 6 characters.');
+      } else {
+        setErrorMessage('An error occurred during sign-up. Please try again.');
+      }
+    }
+  }
+
+  return (
+    <div className="signup-container">
+      <EmailPasswordForm
+        formType="signup"
+        title="Sign Up"
+        showError={showError}
+        errorMessage={errorMessage}
+        formData={formData}
+        onSubmit={handleSubmit}
+        onInputChange={handleChange}
+      />
+      <p>
+        Already have an account? <a href="/signin">Sign In</a>
+      </p>
+    </div>
+  );
 }
 
 export default Signup;
