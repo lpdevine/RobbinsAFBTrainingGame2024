@@ -6,12 +6,12 @@ import { GetActiveUserEmail, GetUserData, SetDoc } from "../firebase";
 import { Timestamp, doc, setDoc } from "firebase/firestore";
 import DownloadCertificate from "../components/DownloadCertificate";
 import SendEmail from "../components/EmailJS";
-import { database } from "../firebase"; // Ensure database is imported
+import { auth, database } from "../firebase"; // Ensure auth and database are imported
 
 function STINFO() {
     const buildContext = GetBuildContext("STINFO");
     const [completed, setCompleted] = useState(false);
-    const [email, setEmail] = useState("");
+    const [email, setEmail] = useState<string | null>(null); // Allow email to be null
     const [userData, setUserData] = useState<any>({});
     const [initDone, setInitDone] = useState(false);
 
@@ -22,10 +22,15 @@ function STINFO() {
     async function Init() {
         setInitDone(true);
 
-        const email = await GetActiveUserEmail();
-        const data = await GetUserData(email);
+        const user = auth.currentUser;
+        if (!user || !user.email) {
+            console.error("No authenticated user or email found.");
+            return;
+        }
+        
+        const data = await GetUserData(user.uid);
 
-        setEmail(email);
+        setEmail(user.email);
         setUserData(data);
     }
 
@@ -36,18 +41,24 @@ function STINFO() {
     }, []);
 
     async function UpdateMemoryPassed() {
-        const email = GetActiveUserEmail();
-        const data = await GetUserData(email);
+        const user = auth.currentUser;
+        if (!user || !user.email) {
+            console.error("No authenticated user or email found.");
+            return;
+        }
+        
+        const uid = user.uid;
+        const data = await GetUserData(uid);
 
         // Update progress and completion time for STINFO
         data["stinfoProgress"] = 100;
         data["stinfoCompletionTime"] = Timestamp.now();
 
         setCompleted(true);
-        SendEmail(email, "STINFO");
+        SendEmail(user.email, "STINFO");
 
         // Save updated user data in Firestore
-        SetDoc(data, `users/${email}`);
+        SetDoc(data, `users/${uid}`);
 
         // Define certificate data and use courseName as certID
         const certData = {
@@ -55,12 +66,12 @@ function STINFO() {
             nameLast: data.lastName,
             courseName: "STINFO",
             completionDate: Timestamp.now(),
-            Email: email
+            Email: user.email
         };
 
         try {
             // Use courseName as the document ID in the certs sub-collection
-            const certDocRef = doc(database, `users/${email}/certs`, certData.courseName);
+            const certDocRef = doc(database, `users/${uid}/certs`, certData.courseName);
             await setDoc(certDocRef, certData); // Set the document in Firestore with courseName as ID
             console.log("Certificate added to the user's certs collection with courseName as certID");
         } catch (error) {
@@ -85,7 +96,7 @@ function STINFO() {
                     lastName={userData.lastName}
                     courseName={"STINFO"}
                     completionDate={Timestamp.now()}
-                    userEmail={email}
+                    userEmail={email || ""} // Provide fallback empty string for email
                 />
             )}
         </>
