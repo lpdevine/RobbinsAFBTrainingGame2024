@@ -1,28 +1,25 @@
-
-
-import "../components/components.css"
+import "../components/components.css";
 import GetBuildContext from "../components/UnityGame";
 import { Unity } from "react-unity-webgl";
-import {  useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { GetActiveUserEmail, GetUserData, SetDoc } from "../firebase";
 import { Timestamp } from "firebase/firestore";
 import DownloadCertificate from "../components/DownloadCertificate";
 import SendEmail from "../components/EmailJS";
 
-
-function Records(){
+function Records() {
     const buildContext = GetBuildContext("records");
-
-
 
     const [completed, setCompleted] = useState(false);
     const [email, setEmail] = useState("");
     const [userData, setUserData] = useState<any>({});
     const [initDone, setInitDone] = useState(false);
-    if(!initDone){
+
+    if (!initDone) {
         Init();
     }
-    async function Init(){
+
+    async function Init() {
         setInitDone(true);
 
         const email = await GetActiveUserEmail();
@@ -32,54 +29,50 @@ function Records(){
         setUserData(data);
     }
 
-
-
-    // Handling and Subscription to Extern Jeopardy Passed UnityWebGL Events
-    const  handleMemoryPassed = useCallback(() => {
+    // Handling and Subscription to Extern MemoryPassed UnityWebGL Events
+    const handleMemoryPassed = useCallback(() => {
         console.log("Memory Passed!");
-        
         UpdateMemoryPassed();
+    }, []);
 
-        }, []);
-    async function UpdateMemoryPassed(){
-        // Get Email
+    async function UpdateMemoryPassed() {
         const email = GetActiveUserEmail();
         const data = await GetUserData(email);
 
+        // Update progress and completion time
         data["recordsProgress"] = 100;
         data["recordsCompletionTime"] = Timestamp.now();
 
+        // Mark completion and send certificate email
         setCompleted(true);
         SendEmail(email, "Records Management");
 
-        // Save Doc
-        SetDoc(data, "users/" + email);
+        // Save updated user data in Firestore
+        SetDoc(data, `users/${email}`);
     }
+
     useEffect(() => {
         buildContext.addEventListener("MemoryPassed", handleMemoryPassed);
         return () => {
             buildContext.removeEventListener("MemoryPassed", handleMemoryPassed);
         };
-    }, [buildContext.addEventListener, buildContext.removeEventListener, handleMemoryPassed]);
+    }, [buildContext, handleMemoryPassed]);
 
-
-
-
-    
-    return <>
-    {!completed ? 
-        <Unity unityProvider={buildContext.unityProvider} className="UnityGame"/> 
-        : 
-        <DownloadCertificate
-                firstName={userData.firstName}
-                lastName={userData.lastName}
-                courseName={"Records Management"}
-                completionDate={Timestamp.now()}
-                userEmail={email}
-            />
-    }
-    </>;
+    return (
+        <>
+            {!completed ? (
+                <Unity unityProvider={buildContext.unityProvider} className="UnityGame" />
+            ) : (
+                <DownloadCertificate
+                    firstName={userData.firstName}
+                    lastName={userData.lastName}
+                    courseName={"Records Management"}
+                    completionDate={Timestamp.now()}
+                    userEmail={email}
+                />
+            )}
+        </>
+    );
 }
-
 
 export default Records;
