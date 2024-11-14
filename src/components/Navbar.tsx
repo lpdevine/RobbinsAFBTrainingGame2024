@@ -1,3 +1,5 @@
+// Navbar.tsx
+
 import { useNavigate } from 'react-router-dom';
 import './components.css';
 import { signOut } from 'firebase/auth';
@@ -37,7 +39,7 @@ function Navbar() {
         <div className="navbar">
             {/* Top section for main navigation buttons */}
             <div className="navbar-top">
-                <div className="floatLeft libutton" onClick={() => navigate('/')}> Home</div>
+                <div className="floatLeft libutton" onClick={() => navigate('/dashboard')}> Home</div> {/* Home redirects to Dashboard */}
                 <div className="floatLeft libutton" onClick={() => navigate('/stinfo')}> STINFO</div>
                 <div className="floatLeft libutton" onClick={() => navigate('/nofear')}> No Fear Act</div>
                 <div className="floatLeft libutton" onClick={() => navigate('/records')}> Records Management</div>

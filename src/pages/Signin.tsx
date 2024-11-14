@@ -4,7 +4,6 @@ import { doc, getDoc } from "firebase/firestore";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import EmailPasswordForm from "../components/EmailPasswordForm";
-import Navbar from "../components/Navbar";
 import "../components/components.css";
 import ResizeableBox from "../components/ResizeableBox";
 import { signInWithEmailAndPassword } from "firebase/auth";
@@ -67,29 +66,26 @@ function Signin() {
   }
 
   return (
-    <>
-      <Navbar />
-      <ResizeableBox>
-        <div>
-          <EmailPasswordForm
-            formType="login"
-            title="Login"
-            errorMessage={errorMessage}
-            showError={showError}
-            formData={signinData}
-            onSubmit={handleSubmit}
-            onInputChange={handleChange}
-          />
-          <Link to="/forgot-password" className="link">
-            Forgot Password?
-          </Link>
-          <hr className="short-hr"></hr>
-          <button className="button-with-link">
-            <Link to="/signup">Create New Account</Link>
-          </button>
-        </div>
-      </ResizeableBox>
-    </>
+    <ResizeableBox>
+      <div>
+        <EmailPasswordForm
+          formType="login"
+          title="Login"
+          errorMessage={errorMessage}
+          showError={showError}
+          formData={signinData}
+          onSubmit={handleSubmit}
+          onInputChange={handleChange}
+        />
+        <Link to="/forgot-password" className="link">
+          Forgot Password?
+        </Link>
+        <hr className="short-hr"></hr>
+        <button className="button-with-link">
+          <Link to="/signup">Create New Account</Link>
+        </button>
+      </div>
+    </ResizeableBox>
   );
 }
 
