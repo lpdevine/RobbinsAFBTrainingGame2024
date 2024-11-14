@@ -3,9 +3,10 @@ import GetBuildContext from "../components/UnityGame";
 import { Unity } from "react-unity-webgl";
 import { useCallback, useEffect, useState } from "react";
 import { GetActiveUserEmail, GetUserData, SetDoc } from "../firebase";
-import { Timestamp } from "firebase/firestore";
+import { Timestamp, doc, setDoc } from "firebase/firestore";
 import DownloadCertificate from "../components/DownloadCertificate";
 import SendEmail from "../components/EmailJS";
+import { database } from "../firebase"; // Ensure database is imported
 
 function Records() {
     const buildContext = GetBuildContext("records");
@@ -23,13 +24,13 @@ function Records() {
         setInitDone(true);
 
         const email = await GetActiveUserEmail();
-        const data = await GetUserData(email);
+        const data = await GetUserData(email); // Ensures document is created if missing
 
         setEmail(email);
         setUserData(data);
     }
 
-    // Handling and Subscription to Extern MemoryPassed UnityWebGL Events
+    // Handling and Subscription to MemoryPassed UnityWebGL Event
     const handleMemoryPassed = useCallback(() => {
         console.log("Memory Passed!");
         UpdateMemoryPassed();
@@ -48,7 +49,24 @@ function Records() {
         SendEmail(email, "Records Management");
 
         // Save updated user data in Firestore
-        SetDoc(data, `users/${email}`);
+        await SetDoc(data, `users/${email}`);
+
+        // Add a new certificate document in the `certs` sub-collection
+        const certData = {
+            nameFirst: data.firstName,
+            nameLast: data.lastName,
+            courseName: "Records Management",
+            completionDate: Timestamp.now(),
+            Email: email,
+        };
+
+        try {
+            const certDocRef = doc(database, `users/${email}/certs`, certData.courseName);
+            await setDoc(certDocRef, certData);
+            console.log("Certificate added to the user's certs collection with courseName as certID");
+        } catch (error) {
+            console.error("Error adding certificate to certs collection:", error);
+        }
     }
 
     useEffect(() => {

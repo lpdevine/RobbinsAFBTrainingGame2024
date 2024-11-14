@@ -2,11 +2,12 @@ import "../components/components.css";
 import GetBuildContext from "../components/UnityGame";
 import { Unity } from "react-unity-webgl";
 import { useCallback, useEffect, useState } from "react";
-import { ReactUnityEventParameter } from "react-unity-webgl/distribution/types/react-unity-event-parameters";
-import { GetActiveUserEmail, GetUserData, SetDoc } from "../firebase";
-import { Timestamp } from "firebase/firestore";
+import { GetUserData, SetDoc } from "../firebase";
+import { Timestamp, doc, setDoc } from "firebase/firestore";
 import DownloadCertificate from "../components/DownloadCertificate";
 import SendEmail from "../components/EmailJS";
+import { auth, database } from "../firebase"; // Ensure auth and database are imported
+import { ReactUnityEventParameter } from "react-unity-webgl/distribution/types/react-unity-event-parameters";
 
 const maxAttempts = 3;
 
@@ -14,7 +15,7 @@ function NoFearAct() {
     const buildContext = GetBuildContext("nofearact");
 
     const [completed, setCompleted] = useState(false);
-    const [email, setEmail] = useState("");
+    const [email, setEmail] = useState<string | null>(null); // Allow email to be null
     const [userData, setUserData] = useState<any>({});
     const [initDone, setInitDone] = useState(false);
 
@@ -25,10 +26,15 @@ function NoFearAct() {
     async function Init() {
         setInitDone(true);
 
-        const email = await GetActiveUserEmail();
-        const data = await GetUserData(email);
+        const user = auth.currentUser;
+        if (!user || !user.email) {
+            console.error("No authenticated user or email found.");
+            return;
+        }
 
-        setEmail(email);
+        const data = await GetUserData(user.uid);
+
+        setEmail(user.email);
         setUserData(data);
     }
 
@@ -37,8 +43,13 @@ function NoFearAct() {
     }
 
     async function LoadUnityProgress() {
-        const email = GetActiveUserEmail();
-        const data = await GetUserData(email);
+        const user = auth.currentUser;
+        if (!user || !user.email) {
+            console.error("No authenticated user or email found.");
+            return;
+        }
+
+        const data = await GetUserData(user.uid);
 
         if (data.nofearActsCompleted) buildContext.sendMessage("Acts", "OnModuleCompleted");
         if (data.nofearDartsCompleted) buildContext.sendMessage("Darts", "OnModuleCompleted");
@@ -55,7 +66,7 @@ function NoFearAct() {
         return () => {
             buildContext.removeEventListener("SceneLoaded", handleSceneLoaded);
         };
-    }, [buildContext.addEventListener, buildContext.removeEventListener, handleSceneLoaded]);
+    }, [buildContext, handleSceneLoaded]);
 
     const handleModuleCompleted = useCallback((moduleName: ReactUnityEventParameter) => {
         console.log("Module Completed: " + moduleName);
@@ -63,8 +74,13 @@ function NoFearAct() {
     }, []);
 
     async function UpdateModuleCompleted(moduleName: ReactUnityEventParameter) {
-        const email = GetActiveUserEmail();
-        const data = await GetUserData(email);
+        const user = auth.currentUser;
+        if (!user || !user.email) {
+            console.error("No authenticated user or email found.");
+            return;
+        }
+
+        const data = await GetUserData(user.uid);
 
         const moduleNameString = moduleName?.toString();
         if (moduleNameString !== undefined) {
@@ -77,7 +93,7 @@ function NoFearAct() {
             data.nofearProgress = (modulesCompleted / 3) * 100;
         }
 
-        SetDoc(data, `users/${email}`);
+        await SetDoc(data, `users/${user.uid}`);
     }
 
     useEffect(() => {
@@ -85,7 +101,7 @@ function NoFearAct() {
         return () => {
             buildContext.removeEventListener("ModuleCompleted", handleModuleCompleted);
         };
-    }, [buildContext.addEventListener, buildContext.removeEventListener, handleModuleCompleted]);
+    }, [buildContext, handleModuleCompleted]);
 
     const handleJeopardyPassed = useCallback(() => {
         console.log("JeopardyPassed");
@@ -93,8 +109,13 @@ function NoFearAct() {
     }, []);
 
     async function UpdateJeopardyPassed() {
-        const email = GetActiveUserEmail();
-        const data = await GetUserData(email);
+        const user = auth.currentUser;
+        if (!user || !user.email) {
+            console.error("No authenticated user or email found.");
+            return;
+        }
+
+        const data = await GetUserData(user.uid);
 
         data.nofearActsCompleted = false;
         data.nofearDartsCompleted = false;
@@ -104,9 +125,28 @@ function NoFearAct() {
         data.nofearCompletionTime = Timestamp.now();
 
         setCompleted(true);
-        SendEmail(email, "No Fear Act");
+        SendEmail(user.email, "No Fear Act");
 
-        SetDoc(data, `users/${email}`);
+        // Save updated user data in Firestore
+        await SetDoc(data, `users/${user.uid}`);
+
+        // Define certificate data
+        const certData = {
+            nameFirst: data.firstName,
+            nameLast: data.lastName,
+            courseName: "No Fear Act",
+            completionDate: Timestamp.now(),
+            Email: user.email
+        };
+
+        try {
+            // Use courseName as the document ID in the certs sub-collection
+            const certDocRef = doc(database, `users/${user.uid}/certs`, certData.courseName);
+            await setDoc(certDocRef, certData);
+            console.log("Certificate added to the user's certs collection with courseName as certID");
+        } catch (error) {
+            console.error("Error adding certificate to certs collection:", error);
+        }
     }
 
     useEffect(() => {
@@ -114,7 +154,7 @@ function NoFearAct() {
         return () => {
             buildContext.removeEventListener("JeopardyPassed", handleJeopardyPassed);
         };
-    }, [buildContext.addEventListener, buildContext.removeEventListener, handleJeopardyPassed]);
+    }, [buildContext, handleJeopardyPassed]);
 
     const handleJeopardyFailed = useCallback((attemptsRemaining: ReactUnityEventParameter) => {
         console.log("JeopardyFailed");
@@ -122,8 +162,13 @@ function NoFearAct() {
     }, []);
 
     async function UpdateJeopardyFailed(attemptsRemaining: ReactUnityEventParameter) {
-        const email = GetActiveUserEmail();
-        const data = await GetUserData(email);
+        const user = auth.currentUser;
+        if (!user || !user.email) {
+            console.error("No authenticated user or email found.");
+            return;
+        }
+
+        const data = await GetUserData(user.uid);
 
         const attemptsRemainingNum = Number(attemptsRemaining);
         if (isNaN(attemptsRemainingNum)) throw new Error("Attempts Remaining is Not a Number!");
@@ -138,7 +183,7 @@ function NoFearAct() {
             data.nofearAttemptsRemaining = attemptsRemainingNum;
         }
 
-        SetDoc(data, `users/${email}`);
+        await SetDoc(data, `users/${user.uid}`);
     }
 
     useEffect(() => {
@@ -146,7 +191,7 @@ function NoFearAct() {
         return () => {
             buildContext.removeEventListener("JeopardyFailed", handleJeopardyFailed);
         };
-    }, [buildContext.addEventListener, buildContext.removeEventListener, handleJeopardyFailed]);
+    }, [buildContext, handleJeopardyFailed]);
 
     return (
         <>
@@ -158,7 +203,7 @@ function NoFearAct() {
                     lastName={userData.lastName}
                     courseName={"No Fear Act"}
                     completionDate={Timestamp.now()}
-                    userEmail={email}
+                    userEmail={email || ""}
                 />
             )}
         </>
