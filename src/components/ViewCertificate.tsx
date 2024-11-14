@@ -29,8 +29,6 @@ const ViewCertificate: React.FC<ViewCertificateProps> = ({ firstName, lastName, 
                 </PDFViewer>
             </div>
         </div>
-
     );
 }
-
 export default ViewCertificate;

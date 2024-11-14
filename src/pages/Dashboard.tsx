@@ -54,7 +54,7 @@ function Dashboard(): JSX.Element {
             const currentUser = auth.currentUser;
 
             if (!currentUser) {
-                setErrorMessage("Please log in to access the dashboard page.");
+                setErrorMessage("Please log in to view dashboard");
                 return;
             }
 
@@ -94,69 +94,35 @@ function Dashboard(): JSX.Element {
         <>
             <Navbar />
             <div>
-                {errorMessage ? (
-                    <div className="text">
-                        <p>{errorMessage}</p>
-                    </div>
-                ) : userData ? (
+                {userData ? (
                     <>
-                        <h1>Welcome, {userData.firstName}</h1>
-                        <div style={{ textAlign: 'center' }}>
-                            <div className="container">
-                                <h2>Personal Data</h2>
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th>No Fear Act Completion Progress</th>
-                                            <th>No Fear Act Completion Date</th>
-                                            <th>Records Management Completion Progress</th>
-                                            <th>Records Management Completion Date</th>
-                                            <th>STINFO Completion Progress</th>
-                                            <th>STINFO Completion Date</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>{userData.nofearProgress}</td>
-                                            <td>{formatCompletionTime(userData.nofearCompletionTime)}</td>
-                                            <td>{userData.recordsProgress}</td>
-                                            <td>{formatCompletionTime(userData.recordsCompletionTime)}</td>
-                                            <td>{userData.stinfoProgress}</td>
-                                            <td>{formatCompletionTime(userData.stinfoCompletionTime)}</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <br></br>
-
-                            {userData.admin ? (
-                                <div>
+                        <div className="text">
+                            <h1>Dashboard</h1>
+                            <h2>Welcome, {userData.firstName}</h2>
+                        </div>
+                        <div>
+                            {userData.admin === true ? (
+                                <div className="main-content">
                                     <div className="container">
-                                        <h2>All User's Data</h2>
+                                        <h2 className="table-name">All User's Data</h2>
                                         <table>
                                             <thead>
                                                 <tr>
-                                                    <th>Name</th>
-                                                    <th>Squadron</th>
-                                                    <th>No Fear Act Completion Progress</th>
-                                                    <th>No Fear Act Completion Date</th>
-                                                    <th>Records Management Completion Progress</th>
-                                                    <th>Records Management Completion Date</th>
-                                                    <th>STINFO Completion Progress</th>
-                                                    <th>STINFO Completion Date</th>
+                                                    <th className="th">Name</th>
+                                                    <th className="th">Squadron</th>
+                                                    <th className="th">No Fear Act Completion Progress %</th>
+                                                    <th className="th">Records Management Completion Progress %</th>
+                                                    <th className="th">STINFO Completion Progress %</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 {allUserData && allUserData.map((user, key) => (
                                                     <tr key={key}>
-                                                        <td>{user.lastName}, {user.firstName}</td>
-                                                        <td>{user.squadron}</td>
-                                                        <td>{user.nofearProgress}</td>
-                                                        <td>{formatCompletionTime(user.nofearCompletionTime)}</td>
-                                                        <td>{user.recordsProgress}</td>
-                                                        <td>{formatCompletionTime(user.recordsCompletionTime)}</td>
-                                                        <td>{user.stinfoProgress}</td>
-                                                        <td>{formatCompletionTime(user.stinfoCompletionTime)}</td>
+                                                        <td className="td">{user.lastName},<br></br>{user.firstName}</td>
+                                                        <td className="td">{user.squadron}</td>
+                                                        <td className="td">{user.nofearProgress}</td>
+                                                        <td className="td">{user.recordsProgress}</td>
+                                                        <td className="td">{user.stinfoProgress}</td>
                                                     </tr>
                                                 ))}
                                             </tbody>
@@ -164,18 +130,38 @@ function Dashboard(): JSX.Element {
                                     </div>
                                 </div>
                             ) : (
-                                <p>You're a regular user.</p>
+                                <div className="main-content">
+                                    <div className="container">
+                                        <h2 style={{ textAlign: 'center' }}>Personal Data</h2>
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th>No Fear Act Completion Progress</th>
+                                                    <th>Records Management Completion Progress</th>
+                                                    <th>STINFO Completion Progress</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>{userData.nofearProgress}</td>
+                                                    <td>{userData.recordsProgress}</td>
+                                                    <td>{userData.stinfoProgress}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
                             )}
                         </div>
                     </>
                 ) : (
                     <div className="text">
-                        <p>Loading...</p>
+                        <h1>Dashboard</h1>
+                        <h2>Please log in to view dashboard</h2>
                     </div>
                 )}
             </div>
         </>
-    );
+    );    
 }
-
 export default Dashboard;
