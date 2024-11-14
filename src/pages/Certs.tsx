@@ -101,19 +101,19 @@ function Certs() {
                         </div>
                         <div className="main-content">
                             <div className="container">
-                                <h2 style={{ textAlign: 'center' }}>Certificates</h2>
+                                <h2 className="table-name">Certificates</h2>
                                 <table>
                                     <thead>
                                         <tr>
-                                            <th>Certificate ID</th>
-                                            <th>Actions</th>
+                                            <th className="th">Certificate ID</th>
+                                            <th className="th">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         {certsData.map((cert) => (
                                             <tr key={cert.id}>
-                                                <td>{cert.id}</td>
-                                                <td>
+                                                <td className="td">{cert.id}</td>
+                                                <td className="td">
                                                     <DownloadCertificate
                                                         firstName={cert.nameFirst}
                                                         lastName={cert.nameLast}
@@ -142,5 +142,4 @@ function Certs() {
         </>
     );
 }
-
 export default Certs;
