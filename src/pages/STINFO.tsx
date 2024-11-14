@@ -53,7 +53,7 @@ function STINFO() {
     return (
         <>
             {!completed ? (
-                <div className="unity-wrapper"> {/* Centering wrapper */}
+                <div className="unity-wrapper"> {/* Added wrapper for centering */}
                     <Unity unityProvider={buildContext.unityProvider} className="UnityGame" />
                 </div>
             ) : (
