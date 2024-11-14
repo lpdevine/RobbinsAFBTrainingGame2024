@@ -6,13 +6,12 @@ import { GetActiveUserEmail, GetUserData, SetDoc } from "../firebase";
 import { Timestamp, doc, setDoc } from "firebase/firestore";
 import DownloadCertificate from "../components/DownloadCertificate";
 import SendEmail from "../components/EmailJS";
-import { database } from "../firebase"; // Ensure database is imported
+import { auth, database } from "../firebase"; // Ensure auth and database are imported
 
 function Records() {
     const buildContext = GetBuildContext("records");
-
     const [completed, setCompleted] = useState(false);
-    const [email, setEmail] = useState("");
+    const [email, setEmail] = useState<string | null>(null); // Allow email to be null
     const [userData, setUserData] = useState<any>({});
     const [initDone, setInitDone] = useState(false);
 
@@ -23,46 +22,57 @@ function Records() {
     async function Init() {
         setInitDone(true);
 
-        const email = await GetActiveUserEmail();
-        const data = await GetUserData(email); // Ensures document is created if missing
+        const user = auth.currentUser;
+        if (!user || !user.email) {
+            console.error("No authenticated user or email found.");
+            return;
+        }
+        
+        const data = await GetUserData(user.uid);
 
-        setEmail(email);
+        setEmail(user.email);
         setUserData(data);
     }
 
-    // Handling and Subscription to MemoryPassed UnityWebGL Event
+    // Handling and Subscription to External Memory Passed UnityWebGL Events
     const handleMemoryPassed = useCallback(() => {
         console.log("Memory Passed!");
         UpdateMemoryPassed();
     }, []);
 
     async function UpdateMemoryPassed() {
-        const email = GetActiveUserEmail();
-        const data = await GetUserData(email);
+        const user = auth.currentUser;
+        if (!user || !user.email) {
+            console.error("No authenticated user or email found.");
+            return;
+        }
+        
+        const uid = user.uid;
+        const data = await GetUserData(uid);
 
-        // Update progress and completion time
+        // Update progress and completion time for Records Management
         data["recordsProgress"] = 100;
         data["recordsCompletionTime"] = Timestamp.now();
 
-        // Mark completion and send certificate email
         setCompleted(true);
-        SendEmail(email, "Records Management");
+        SendEmail(user.email, "Records Management");
 
         // Save updated user data in Firestore
-        await SetDoc(data, `users/${email}`);
+        SetDoc(data, `users/${uid}`);
 
-        // Add a new certificate document in the `certs` sub-collection
+        // Define certificate data and use courseName as certID
         const certData = {
             nameFirst: data.firstName,
             nameLast: data.lastName,
             courseName: "Records Management",
             completionDate: Timestamp.now(),
-            Email: email,
+            Email: user.email
         };
 
         try {
-            const certDocRef = doc(database, `users/${email}/certs`, certData.courseName);
-            await setDoc(certDocRef, certData);
+            // Use courseName as the document ID in the certs sub-collection
+            const certDocRef = doc(database, `users/${uid}/certs`, certData.courseName);
+            await setDoc(certDocRef, certData); // Set the document in Firestore with courseName as ID
             console.log("Certificate added to the user's certs collection with courseName as certID");
         } catch (error) {
             console.error("Error adding certificate to certs collection:", error);
@@ -74,7 +84,7 @@ function Records() {
         return () => {
             buildContext.removeEventListener("MemoryPassed", handleMemoryPassed);
         };
-    }, [buildContext, handleMemoryPassed]);
+    }, [buildContext.addEventListener, buildContext.removeEventListener, handleMemoryPassed]);
 
     return (
         <>
@@ -86,7 +96,7 @@ function Records() {
                     lastName={userData.lastName}
                     courseName={"Records Management"}
                     completionDate={Timestamp.now()}
-                    userEmail={email}
+                    userEmail={email || ""} // Provide fallback empty string for email
                 />
             )}
         </>
