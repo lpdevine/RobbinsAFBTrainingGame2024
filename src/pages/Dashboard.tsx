@@ -1,3 +1,5 @@
+// Dashboard.tsx
+
 import Navbar from "../components/Navbar";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
@@ -22,10 +24,9 @@ interface UserData {
 function Dashboard(): JSX.Element {
     const [errorMessage, setErrorMessage] = useState<string>("");
     const navigate = useNavigate();
-    const [userData, setUserData] = useState<UserData | null>(null); // Initialize userData state
-    const [allUserData, setAllUserData] = useState<UserData[] | null>(null); // State for all user data
+    const [userData, setUserData] = useState<UserData | null>(null);
+    const [allUserData, setAllUserData] = useState<UserData[] | null>(null);
 
-    // Function to fetch individual user data by UID
     const getUserData = async (uid: string): Promise<UserData | null> => {
         try {
             const userDocRef = doc(database, "users", uid);
@@ -42,7 +43,6 @@ function Dashboard(): JSX.Element {
         }
     };
 
-    // Function to fetch all user data (for admin users)
     const getAllUserData = async (): Promise<UserData[]> => {
         const usersCollectionRef = collection(database, "users");
         const userDocsSnapshot = await getDocs(usersCollectionRef);
@@ -65,7 +65,6 @@ function Dashboard(): JSX.Element {
                 if (userData) {
                     setUserData(userData);
 
-                    // If the user is an admin, fetch all users' data
                     if (userData.admin) {
                         const allUsers = await getAllUserData();
                         setAllUserData(allUsers);
@@ -79,10 +78,9 @@ function Dashboard(): JSX.Element {
             }
         };
 
-        fetchData(); // Fetch user data when component mounts
-    }, []); // Empty dependency array to run effect only once
+        fetchData();
+    }, []);
 
-    // Helper function to format completion time
     const formatCompletionTime = (completionTime: Timestamp | null) => {
         if (!completionTime || completionTime.seconds === 0) {
             return "Not Completed";
@@ -93,15 +91,19 @@ function Dashboard(): JSX.Element {
     return (
         <>
             <Navbar />
-            <div>
-                {errorMessage ? (
-                    <div className="text">
-                        <p>{errorMessage}</p>
-                    </div>
-                ) : userData ? (
-                    <>
-                        <h1>Welcome, {userData.firstName}</h1>
-                        <div style={{ textAlign: 'center' }}>
+            <div className="dashboard-container">
+                {/* Images in the top left and top right corners */}
+                <img src="src/images/402_SWEG_Shield.png" alt="Left Image" className="top-left-image" />
+                <img src="src/images/USAF_Logo.png" alt="Right Image" className="top-right-image" />
+
+                <h1>Welcome, {userData?.firstName || "User"}</h1>
+                <div className="center-content">
+                    {errorMessage ? (
+                        <div className="text">
+                            <p>{errorMessage}</p>
+                        </div>
+                    ) : userData ? (
+                        <>
                             <div className="container">
                                 <h2>Personal Data</h2>
                                 <table>
@@ -127,52 +129,50 @@ function Dashboard(): JSX.Element {
                                     </tbody>
                                 </table>
                             </div>
-                            <br></br>
+                            <br />
 
                             {userData.admin ? (
-                                <div>
-                                    <div className="container">
-                                        <h2>All User's Data</h2>
-                                        <table>
-                                            <thead>
-                                                <tr>
-                                                    <th>Name</th>
-                                                    <th>Squadron</th>
-                                                    <th>No Fear Act Completion Progress</th>
-                                                    <th>No Fear Act Completion Date</th>
-                                                    <th>Records Management Completion Progress</th>
-                                                    <th>Records Management Completion Date</th>
-                                                    <th>STINFO Completion Progress</th>
-                                                    <th>STINFO Completion Date</th>
+                                <div className="container">
+                                    <h2>All User's Data</h2>
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Squadron</th>
+                                                <th>No Fear Act Completion Progress</th>
+                                                <th>No Fear Act Completion Date</th>
+                                                <th>Records Management Completion Progress</th>
+                                                <th>Records Management Completion Date</th>
+                                                <th>STINFO Completion Progress</th>
+                                                <th>STINFO Completion Date</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {allUserData && allUserData.map((user, key) => (
+                                                <tr key={key}>
+                                                    <td>{user.lastName}, {user.firstName}</td>
+                                                    <td>{user.squadron}</td>
+                                                    <td>{user.nofearProgress}</td>
+                                                    <td>{formatCompletionTime(user.nofearCompletionTime)}</td>
+                                                    <td>{user.recordsProgress}</td>
+                                                    <td>{formatCompletionTime(user.recordsCompletionTime)}</td>
+                                                    <td>{user.stinfoProgress}</td>
+                                                    <td>{formatCompletionTime(user.stinfoCompletionTime)}</td>
                                                 </tr>
-                                            </thead>
-                                            <tbody>
-                                                {allUserData && allUserData.map((user, key) => (
-                                                    <tr key={key}>
-                                                        <td>{user.lastName}, {user.firstName}</td>
-                                                        <td>{user.squadron}</td>
-                                                        <td>{user.nofearProgress}</td>
-                                                        <td>{formatCompletionTime(user.nofearCompletionTime)}</td>
-                                                        <td>{user.recordsProgress}</td>
-                                                        <td>{formatCompletionTime(user.recordsCompletionTime)}</td>
-                                                        <td>{user.stinfoProgress}</td>
-                                                        <td>{formatCompletionTime(user.stinfoCompletionTime)}</td>
-                                                    </tr>
-                                                ))}
-                                            </tbody>
-                                        </table>
-                                    </div>
+                                            ))}
+                                        </tbody>
+                                    </table>
                                 </div>
                             ) : (
                                 <p>You're a regular user.</p>
                             )}
+                        </>
+                    ) : (
+                        <div className="text">
+                            <p>Loading...</p>
                         </div>
-                    </>
-                ) : (
-                    <div className="text">
-                        <p>Loading...</p>
-                    </div>
-                )}
+                    )}
+                </div>
             </div>
         </>
     );

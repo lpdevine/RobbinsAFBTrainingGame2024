@@ -1,9 +1,10 @@
+// ForgotPassword.tsx
+
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { sendPasswordResetEmail } from "firebase/auth";
 import { auth } from "../firebase";
 import "../components/components.css";
-import Navbar from "../components/Navbar";
 import EmailPasswordForm from "../components/EmailPasswordForm";
 
 function ForgotPassword() {
@@ -40,23 +41,20 @@ function ForgotPassword() {
     }
 
     return (
-        <>
-            <Navbar />
-            <div className="login-container"> {/* Centered, larger container */}
-                <EmailPasswordForm
-                    formType="forgotpassword"
-                    title="Forgot Password"
-                    errorMessage={errorMessage}
-                    showError={showError}
-                    formData={emailData}
-                    onSubmit={handleSubmit}
-                    onInputChange={handleChange}
-                />
-                <Link to="/signup" className="link">New Here? Sign Up</Link>
-                <br />
-                <Link to="/signin" className="link">Back To Sign In</Link>
-            </div>
-        </>
+        <div className="login-container"> {/* Centered, larger container */}
+            <EmailPasswordForm
+                formType="forgotpassword"
+                title="Forgot Password"
+                errorMessage={errorMessage}
+                showError={showError}
+                formData={emailData}
+                onSubmit={handleSubmit}
+                onInputChange={handleChange}
+            />
+            <Link to="/signup" className="link">New Here? Sign Up</Link>
+            <br />
+            <Link to="/signin" className="link">Back To Sign In</Link>
+        </div>
     );
 }
 

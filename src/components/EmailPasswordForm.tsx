@@ -31,7 +31,7 @@ function EmailPasswordForm(props: Props) {
           <h2 className="form-title">{props.title}</h2>
           {formType === 'signup' && (
             <>
-              <div>
+              <div className="form-group">
                 <label htmlFor="firstName">First Name:</label>
                 <input
                   className="form-input"
@@ -44,7 +44,7 @@ function EmailPasswordForm(props: Props) {
                   required
                 />
               </div>
-              <div>
+              <div className="form-group">
                 <label htmlFor="lastName">Last Name:</label>
                 <input
                   className="form-input"
@@ -57,7 +57,7 @@ function EmailPasswordForm(props: Props) {
                   required
                 />
               </div>
-              <div>
+              <div className="form-group">
                 <label htmlFor="squadron">Squadron:</label>
                 <select
                   className="form-select"
@@ -80,7 +80,7 @@ function EmailPasswordForm(props: Props) {
               </div>
             </>
           )}
-          <div>
+          <div className="form-group">
             <label htmlFor="email">Email:</label>
             <input
               className="form-input"
@@ -94,7 +94,7 @@ function EmailPasswordForm(props: Props) {
             />
           </div>
           {(formType === 'signup' || formType === 'login') && (
-            <div>
+            <div className="form-group">
               <label htmlFor="password">Password:</label>
               <input
                 className="form-input"
@@ -109,7 +109,7 @@ function EmailPasswordForm(props: Props) {
             </div>
           )}
           {formType === 'signup' && (
-            <div>
+            <div className="form-group">
               <label htmlFor="confirmPassword">Confirm Password:</label>
               <input
                 className="form-input"

@@ -1,10 +1,8 @@
-// Navbar.tsx
-
 import { useNavigate } from 'react-router-dom';
 import './components.css';
 import { signOut } from 'firebase/auth';
-import { auth } from '../firebase.ts';
-import { getUserData } from './firestoreUtils.tsx';
+import { auth } from '../firebase';
+import { getUserData } from './firestoreUtils';
 import { useState, useEffect } from 'react';
 
 interface UserData {
@@ -17,22 +15,30 @@ interface UserData {
 function Navbar() {
     const navigate = useNavigate();
     const [userData, setUserData] = useState<UserData | null>(null);
+    const [showDropdown, setShowDropdown] = useState(false);
 
     useEffect(() => {
         const fetchData = async () => {
-            const userDataString = localStorage.getItem('userData');
-            if (userDataString) {
-                const userEmail = JSON.parse(userDataString);
-                const userData = await getUserData(userEmail);
-                setUserData(userData);
+            const currentUser = auth.currentUser;
+            if (currentUser) {
+                const userEmail = currentUser.email;
+                if (userEmail) {
+                    const userData = await getUserData(userEmail);
+                    setUserData(userData);
+                }
             }
         };
         fetchData();
     }, []);
 
-    const [showDropdown, setShowDropdown] = useState(false);
     const toggleDropdown = () => {
         setShowDropdown(!showDropdown);
+    };
+
+    const handleSignOut = () => {
+        localStorage.clear();
+        signOut(auth);
+        navigate('/signin');
     };
 
     return (
@@ -57,8 +63,8 @@ function Navbar() {
                         </div>
                     )}
                 </div>
-                <div className="floatRight libutton" onClick={() => { localStorage.clear(); signOut(auth); navigate('/signin'); }}>
-                    {userData ? 'Sign Out' : 'Sign In'}
+                <div className="floatRight libutton" onClick={auth.currentUser ? handleSignOut : () => navigate('/signin')}>
+                    {auth.currentUser ? 'Sign Out' : 'Sign In'}
                 </div>
             </div>
         </div>

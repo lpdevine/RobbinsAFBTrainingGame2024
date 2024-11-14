@@ -197,16 +197,69 @@ input {
     padding: 10px;
     margin: 20px auto; /* Center the game within the container */
     display: block;
+    
 }
 .form-input, .form-select {
-    width: 100%;
-    padding: 10px;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    width: 90%; /* Reduce width for a more compact look */
+    padding: 8px; /* Smaller padding for a more compact input field */
+    margin-top: 8px; /* Adjust margin to reduce spacing between fields */
+    margin-bottom: 8px;
     border: 1px solid #ddd;
     border-radius: 4px;
-    font-size: 1em;
+    font-size: 0.9em; /* Slightly smaller font size */
     background-color: white;
     color: black;
+}
+
+.unity-wrapper {
+    margin-left: 250px; /* Offset for the navbar width */
+    padding: 0 20px; /* Optional padding for spacing */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: calc(100% - 250px); /* Ensure it doesn’t overflow the remaining space */
+}
+
+.form-submit-button {
+    width: 90%;
+    padding: 8px;
+    font-size: 0.9em;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+.form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Ensures labels are left-aligned */
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 8px;
+}
+.dashboard-container {
+    position: relative;
+    margin-left: 250px; /* Adjust for the sidebar */
+    width: calc(100% - 250px);
+    padding: 20px;
+}
+
+.top-left-image {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 50px; /* Adjust size as needed */
+    height: auto;
+}
+
+.top-right-image {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 50px; /* Adjust size as needed */
+    height: auto;
+}
+
+.center-content {
+    text-align: center;
+    margin-top: 60px; /* Adds space below the images */
 }
 
