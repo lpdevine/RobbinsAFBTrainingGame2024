@@ -1,20 +1,18 @@
 import Navbar from "../components/Navbar";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { auth, database } from "../firebase.ts";
-import { useLocation } from 'react-router-dom';
-import { getUserData, getAllUserData } from "../components/firestoreUtils.tsx";
-import "../components/dashboard.css"
-import { Timestamp } from "firebase/firestore";
+import { auth } from "../firebase";
+import "../components/dashboard.css";
+import { doc, getDoc, Timestamp, collection, getDocs } from "firebase/firestore";
+import { database } from "../firebase";
 
 interface UserData {
-
     firstName: string;
     lastName: string;
     squadron: string;
-    nofearCompletionTime: Timestamp;
-    recordsCompletionTime: Timestamp;
-    stinfoCompletionTime: Timestamp;
+    nofearCompletionTime: Timestamp | null;
+    recordsCompletionTime: Timestamp | null;
+    stinfoCompletionTime: Timestamp | null;
     nofearProgress: number;
     recordsProgress: number;
     stinfoProgress: number;
@@ -25,29 +23,82 @@ function Dashboard(): JSX.Element {
     const [errorMessage, setErrorMessage] = useState<string>("");
     const navigate = useNavigate();
     const [userData, setUserData] = useState<UserData | null>(null); // Initialize userData state
-    const [allUserData, setAllUserData] = useState<UserData[] | null>()
+    const [allUserData, setAllUserData] = useState<UserData[] | null>(null); // State for all user data
 
+    // Function to fetch individual user data by UID
+    const getUserData = async (uid: string): Promise<UserData | null> => {
+        try {
+            const userDocRef = doc(database, "users", uid);
+            const userDoc = await getDoc(userDocRef);
+
+            if (userDoc.exists()) {
+                return userDoc.data() as UserData;
+            } else {
+                throw new Error("User data not found.");
+            }
+        } catch (error) {
+            console.error("Error fetching user data:", error);
+            return null;
+        }
+    };
+
+    // Function to fetch all user data (for admin users)
+    const getAllUserData = async (): Promise<UserData[]> => {
+        const usersCollectionRef = collection(database, "users");
+        const userDocsSnapshot = await getDocs(usersCollectionRef);
+        return userDocsSnapshot.docs.map((doc) => doc.data() as UserData);
+    };
 
     useEffect(() => {
         const fetchData = async () => {
-            const userDataString = localStorage.getItem("userData");
-            if (userDataString) {
-                const userEmail = JSON.parse(userDataString);
-                const userData = await getUserData(userEmail);
-                const allUserData = await getAllUserData();
-                setUserData(userData);
-                setAllUserData(allUserData);
+            const currentUser = auth.currentUser;
+
+            if (!currentUser) {
+                setErrorMessage("Please log in to access the dashboard page.");
+                return;
+            }
+
+            try {
+                const uid = currentUser.uid;
+                const userData = await getUserData(uid);
+                
+                if (userData) {
+                    setUserData(userData);
+
+                    // If the user is an admin, fetch all users' data
+                    if (userData.admin) {
+                        const allUsers = await getAllUserData();
+                        setAllUserData(allUsers);
+                    }
+                } else {
+                    setErrorMessage("User data not found.");
+                }
+            } catch (error) {
+                console.error("Error fetching data:", error);
+                setErrorMessage("An error occurred while fetching the data.");
             }
         };
 
         fetchData(); // Fetch user data when component mounts
     }, []); // Empty dependency array to run effect only once
 
+    // Helper function to format completion time
+    const formatCompletionTime = (completionTime: Timestamp | null) => {
+        if (!completionTime || completionTime.seconds === 0) {
+            return "Not Completed";
+        }
+        return new Date(completionTime.seconds * 1000).toLocaleString();
+    };
+
     return (
         <>
             <Navbar />
             <div>
-                {userData ? (
+                {errorMessage ? (
+                    <div className="text">
+                        <p>{errorMessage}</p>
+                    </div>
+                ) : userData ? (
                     <>
                         <h1>Welcome, {userData.firstName}</h1>
                         <div style={{ textAlign: 'center' }}>
@@ -67,18 +118,18 @@ function Dashboard(): JSX.Element {
                                     <tbody>
                                         <tr>
                                             <td>{userData.nofearProgress}</td>
-                                            <td>{userData.nofearCompletionTime.seconds === 0 ? "Not Completed" : new Date(userData.nofearCompletionTime.seconds * 1000).toLocaleString()}</td>
+                                            <td>{formatCompletionTime(userData.nofearCompletionTime)}</td>
                                             <td>{userData.recordsProgress}</td>
-                                            <td>{userData.recordsCompletionTime.seconds === 0 ? "Not Completed" : new Date(userData.recordsCompletionTime.seconds * 1000).toLocaleString()}</td>
+                                            <td>{formatCompletionTime(userData.recordsCompletionTime)}</td>
                                             <td>{userData.stinfoProgress}</td>
-                                            <td>{userData.stinfoCompletionTime.seconds === 0 ? "Not Completed" : new Date(userData.stinfoCompletionTime.seconds * 1000).toLocaleString()}</td>
+                                            <td>{formatCompletionTime(userData.stinfoCompletionTime)}</td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
                             <br></br>
 
-                            {userData.admin === true ? (
+                            {userData.admin ? (
                                 <div>
                                     <div className="container">
                                         <h2>All User's Data</h2>
@@ -101,11 +152,11 @@ function Dashboard(): JSX.Element {
                                                         <td>{user.lastName}, {user.firstName}</td>
                                                         <td>{user.squadron}</td>
                                                         <td>{user.nofearProgress}</td>
-                                                        <td>{user.nofearCompletionTime.seconds === 0 ? "Not Completed" : new Date(user.nofearCompletionTime.seconds * 1000).toLocaleString()}</td>
+                                                        <td>{formatCompletionTime(user.nofearCompletionTime)}</td>
                                                         <td>{user.recordsProgress}</td>
-                                                        <td>{user.recordsCompletionTime.seconds === 0 ? "Not Completed" : new Date(user.recordsCompletionTime.seconds * 1000).toLocaleString()}</td>
+                                                        <td>{formatCompletionTime(user.recordsCompletionTime)}</td>
                                                         <td>{user.stinfoProgress}</td>
-                                                        <td>{user.stinfoCompletionTime.seconds === 0 ? "Not Completed" : new Date(user.stinfoCompletionTime.seconds * 1000).toLocaleString()}</td>
+                                                        <td>{formatCompletionTime(user.stinfoCompletionTime)}</td>
                                                     </tr>
                                                 ))}
                                             </tbody>
@@ -116,15 +167,13 @@ function Dashboard(): JSX.Element {
                                 <p>You're a regular user.</p>
                             )}
                         </div>
-
                     </>
                 ) : (
                     <div className="text">
-                        <p>Please log in to access the dashboard page</p>
+                        <p>Loading...</p>
                     </div>
                 )}
             </div>
-
         </>
     );
 }

@@ -1,22 +1,20 @@
 import Navbar from "../components/Navbar";
 import { useState, useEffect } from "react";
-import { auth, database } from "../firebase.ts";
-import { collection, getDocs, DocumentData } from "firebase/firestore";
-import { getUserData } from "../components/firestoreUtils.tsx";
-import "../components/certs.css"
-import "../components/dashboard.css"
+import { auth, database } from "../firebase";
+import { collection, getDocs, DocumentData, doc, getDoc } from "firebase/firestore";
+import "../components/certs.css";
+import "../components/dashboard.css";
+import DownloadCertificate from "../components/DownloadCertificate";
+import ViewCertificate from "../components/ViewCertificate";
 import { Timestamp } from "firebase/firestore";
-import DownloadCertificate from "../components/DownloadCertificate.tsx";
-import ViewCertificate from "../components/ViewCertificate.tsx";
 
 interface UserData {
-
     firstName: string;
     lastName: string;
     squadron: string;
-    nofearCompletionTime: Timestamp;
-    recordsCompletionTime: Timestamp;
-    stinfoCompletionTime: Timestamp;
+    nofearCompletionTime: Timestamp | null;
+    recordsCompletionTime: Timestamp | null;
+    stinfoCompletionTime: Timestamp | null;
     nofearProgress: number;
     recordsProgress: number;
     stinfoProgress: number;
@@ -25,53 +23,70 @@ interface UserData {
 
 function Certs() {
     const [userData, setUserData] = useState<UserData | null>(null);
-    const [email, setEmail] = useState<string>("");
-    const [errorMessage, setErrorMessage] = useState("")
+    const [errorMessage, setErrorMessage] = useState("");
     const [certsData, setCertsData] = useState<DocumentData[]>([]);
 
     useEffect(() => {
-        const fetchData = async () => {
-            const userDataString = localStorage.getItem("userData");
-            if (userDataString) {
-                const userEmail = JSON.parse(userDataString);
-                setEmail(userEmail);
-                const userData = await getUserData(userEmail);
-                setUserData(userData);
+        const fetchUserData = async () => {
+            try {
+                const currentUser = auth.currentUser;
+                if (!currentUser) {
+                    setErrorMessage("User is not logged in.");
+                    return;
+                }
+
+                const uid = currentUser.uid;
+                const userDocRef = doc(database, "users", uid);
+                const userDoc = await getDoc(userDocRef);
+
+                if (userDoc.exists()) {
+                    setUserData(userDoc.data() as UserData);
+                } else {
+                    setErrorMessage("User data not found.");
+                }
+            } catch (error) {
+                console.error("Error fetching user data:", error);
+                setErrorMessage("Error fetching user data. Please try again.");
             }
         };
 
-        fetchData();
+        fetchUserData();
     }, []);
 
     useEffect(() => {
-        if (email) {
-            const fetchCerts = async () => {
-                try {
-                    const certPath = `users/${email}/certificates`;
-                    const certsCollectionRef = collection(database, certPath);
-                    const certsSnapshot = await getDocs(certsCollectionRef);
-                    const certsData = certsSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-                    setCertsData(certsData);
-                } catch (error) {
-                    console.error("Error fetching certificates:", error);
-                    setCertsData([]); // Clear certs data in case of error
-                    setErrorMessage("Error fetching certificates. Please try again.");
+        const fetchCerts = async () => {
+            try {
+                const currentUser = auth.currentUser;
+                if (!currentUser) {
+                    setErrorMessage("User is not logged in.");
+                    return;
                 }
-            };
-            fetchCerts();
-        }
-    }, [email]);
 
+                const uid = currentUser.uid;
+                const certsCollectionRef = collection(database, "users", uid, "certs");
+                const certsSnapshot = await getDocs(certsCollectionRef);
+                const certsData = certsSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                setCertsData(certsData);
+            } catch (error) {
+                console.error("Error fetching certificates:", error);
+                setCertsData([]); // Clear certs data in case of error
+                setErrorMessage("Error fetching certificates. Please try again.");
+            }
+        };
 
-    async function handleViewCertificate(cert: DocumentData) {
-        <ViewCertificate
-            firstName={cert.firstName}
-            lastName={cert.lastName}
-            courseName={cert.courseName}
-            completionDate={cert.completionDate}
-            userEmail={cert.user}
-        />
+        fetchCerts();
+    }, []);
 
+    function handleViewCertificate(cert: DocumentData) {
+        return (
+            <ViewCertificate
+                firstName={cert.nameFirst}
+                lastName={cert.nameLast}
+                courseName={cert.courseName}
+                completionDate={cert.completionDate}
+                userEmail={cert.Email}
+            />
+        );
     }
 
     return (
@@ -100,16 +115,18 @@ function Certs() {
                                                 <td>{cert.id}</td>
                                                 <td>
                                                     <DownloadCertificate
-                                                        firstName={cert.firstName}
-                                                        lastName={cert.lastName}
+                                                        firstName={cert.nameFirst}
+                                                        lastName={cert.nameLast}
                                                         courseName={cert.courseName}
                                                         completionDate={cert.completionDate}
-                                                        userEmail={cert.userEmail}
+                                                        userEmail={cert.Email}
                                                     />
+                                                    <button onClick={() => handleViewCertificate(cert)}>
+                                                        View
+                                                    </button>
                                                 </td>
                                             </tr>
                                         ))}
-
                                     </tbody>
                                 </table>
                             </div>
@@ -118,11 +135,12 @@ function Certs() {
                 ) : (
                     <div className="text">
                         <h1>Certificates</h1>
-                        <h2>Please log in to view certificates</h2>
+                        <h2>{errorMessage || "Please log in to view certificates"}</h2>
                     </div>
                 )}
             </div>
         </>
-    )
+    );
 }
+
 export default Certs;
