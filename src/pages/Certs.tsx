@@ -1,7 +1,7 @@
 import Navbar from "../components/Navbar";
 import { useState, useEffect } from "react";
 import { auth, database } from "../firebase";
-import { collection, getDocs, DocumentData, doc, getDoc } from "firebase/firestore";
+import { collection, getDocs, onSnapshot, DocumentData, doc, getDoc } from "firebase/firestore";
 import "../components/certs.css";
 import "../components/dashboard.css";
 import DownloadCertificate from "../components/DownloadCertificate";
@@ -26,6 +26,7 @@ function Certs() {
     const [errorMessage, setErrorMessage] = useState("");
     const [certsData, setCertsData] = useState<DocumentData[]>([]);
 
+    // Fetch user data on mount
     useEffect(() => {
         const fetchUserData = async () => {
             try {
@@ -53,6 +54,7 @@ function Certs() {
         fetchUserData();
     }, []);
 
+    // Fetch certificates and listen for real-time updates
     useEffect(() => {
         const fetchCerts = async () => {
             try {
@@ -64,9 +66,15 @@ function Certs() {
 
                 const uid = currentUser.uid;
                 const certsCollectionRef = collection(database, "users", uid, "certs");
-                const certsSnapshot = await getDocs(certsCollectionRef);
-                const certsData = certsSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-                setCertsData(certsData);
+
+                // Listen for real-time updates on the certificates collection
+                const unsubscribe = onSnapshot(certsCollectionRef, (snapshot) => {
+                    const certsData = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                    setCertsData(certsData);
+                });
+
+                // Cleanup listener on unmount
+                return () => unsubscribe();
             } catch (error) {
                 console.error("Error fetching certificates:", error);
                 setCertsData([]); // Clear certs data in case of error

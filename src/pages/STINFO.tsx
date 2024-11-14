@@ -3,9 +3,10 @@ import GetBuildContext from "../components/UnityGame";
 import { Unity } from "react-unity-webgl";
 import { useCallback, useEffect, useState } from "react";
 import { GetActiveUserEmail, GetUserData, SetDoc } from "../firebase";
-import { Timestamp } from "firebase/firestore";
+import { Timestamp, doc, setDoc } from "firebase/firestore";
 import DownloadCertificate from "../components/DownloadCertificate";
 import SendEmail from "../components/EmailJS";
+import { database } from "../firebase"; // Ensure database is imported
 
 function STINFO() {
     const buildContext = GetBuildContext("STINFO");
@@ -47,6 +48,24 @@ function STINFO() {
 
         // Save updated user data in Firestore
         SetDoc(data, `users/${email}`);
+
+        // Define certificate data and use courseName as certID
+        const certData = {
+            nameFirst: data.firstName,
+            nameLast: data.lastName,
+            courseName: "STINFO",
+            completionDate: Timestamp.now(),
+            Email: email
+        };
+
+        try {
+            // Use courseName as the document ID in the certs sub-collection
+            const certDocRef = doc(database, `users/${email}/certs`, certData.courseName);
+            await setDoc(certDocRef, certData); // Set the document in Firestore with courseName as ID
+            console.log("Certificate added to the user's certs collection with courseName as certID");
+        } catch (error) {
+            console.error("Error adding certificate to certs collection:", error);
+        }
     }
 
     useEffect(() => {
