@@ -1,18 +1,14 @@
 import Navbar from "../components/Navbar";
-import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { auth } from "../firebase";
 import "../components/dashboard.css";
-import { doc, getDoc, Timestamp, collection, getDocs } from "firebase/firestore";
+import { doc, getDoc, collection, getDocs } from "firebase/firestore";
 import { database } from "../firebase";
 
 interface UserData {
     firstName: string;
     lastName: string;
     squadron: string;
-    nofearCompletionTime: Timestamp | null;
-    recordsCompletionTime: Timestamp | null;
-    stinfoCompletionTime: Timestamp | null;
     nofearProgress: number;
     recordsProgress: number;
     stinfoProgress: number;
@@ -21,21 +17,18 @@ interface UserData {
 
 function Dashboard(): JSX.Element {
     const [errorMessage, setErrorMessage] = useState<string>("");
-    const navigate = useNavigate();
-    const [userData, setUserData] = useState<UserData | null>(null); // Initialize userData state
-    const [allUserData, setAllUserData] = useState<UserData[] | null>(null); // State for all user data
+    const [userData, setUserData] = useState<UserData | null>(null);
+    const [allUserData, setAllUserData] = useState<UserData[]>([]);
+    const [filteredUserData, setFilteredUserData] = useState<UserData[]>([]);
+    const [nameSearch, setNameSearch] = useState<string>("");
+    const [squadronSearch, setSquadronSearch] = useState<string>("");
 
     // Function to fetch individual user data by UID
     const getUserData = async (uid: string): Promise<UserData | null> => {
         try {
             const userDocRef = doc(database, "users", uid);
             const userDoc = await getDoc(userDocRef);
-
-            if (userDoc.exists()) {
-                return userDoc.data() as UserData;
-            } else {
-                throw new Error("User data not found.");
-            }
+            return userDoc.exists() ? (userDoc.data() as UserData) : null;
         } catch (error) {
             console.error("Error fetching user data:", error);
             return null;
@@ -58,36 +51,44 @@ function Dashboard(): JSX.Element {
                 return;
             }
 
-            try {
-                const uid = currentUser.uid;
-                const userData = await getUserData(uid);
-                
-                if (userData) {
-                    setUserData(userData);
+            const uid = currentUser.uid;
+            const userData = await getUserData(uid);
 
-                    // If the user is an admin, fetch all users' data
-                    if (userData.admin) {
-                        const allUsers = await getAllUserData();
-                        setAllUserData(allUsers);
-                    }
-                } else {
-                    setErrorMessage("User data not found.");
+            if (userData) {
+                setUserData(userData);
+
+                // If the user is an admin, fetch all users' data
+                if (userData.admin) {
+                    const allUsers = await getAllUserData();
+                    setAllUserData(allUsers);
+                    setFilteredUserData(allUsers);
                 }
-            } catch (error) {
-                console.error("Error fetching data:", error);
-                setErrorMessage("An error occurred while fetching the data.");
+            } else {
+                setErrorMessage("User data not found.");
             }
         };
 
-        fetchData(); // Fetch user data when component mounts
-    }, []); // Empty dependency array to run effect only once
+        fetchData();
+    }, []);
 
-    // Helper function to format completion time
-    const formatCompletionTime = (completionTime: Timestamp | null) => {
-        if (!completionTime || completionTime.seconds === 0) {
-            return "Not Completed";
-        }
-        return new Date(completionTime.seconds * 1000).toLocaleString();
+    // Handle search functionality
+    const handleSearch = () => {
+        const filteredData = allUserData.filter((user) => {
+            const nameMatch =
+                user.firstName.toLowerCase().includes(nameSearch.toLowerCase()) ||
+                user.lastName.toLowerCase().includes(nameSearch.toLowerCase());
+            const squadronMatch = user.squadron.toLowerCase().includes(squadronSearch.toLowerCase());
+
+            return nameMatch && squadronMatch;
+        });
+        setFilteredUserData(filteredData);
+    };
+
+    // Handle clearing the search input fields
+    const handleClearSearch = () => {
+        setNameSearch("");
+        setSquadronSearch("");
+        setFilteredUserData(allUserData);
     };
 
     return (
@@ -100,68 +101,70 @@ function Dashboard(): JSX.Element {
                             <h1>Dashboard</h1>
                             <h2>Welcome, {userData.firstName}</h2>
                         </div>
-                        <div>
-                            {userData.admin === true ? (
-                                <div className="main-content">
-                                    <div className="container">
-                                        <h2 className="table-name">All User's Data</h2>
-                                        <table>
-                                            <thead>
-                                                <tr>
-                                                    <th className="th">Name</th>
-                                                    <th className="th">Squadron</th>
-                                                    <th className="th">No Fear Act Completion Progress %</th>
-                                                    <th className="th">Records Management Completion Progress %</th>
-                                                    <th className="th">STINFO Completion Progress %</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                {allUserData && allUserData.map((user, key) => (
-                                                    <tr key={key}>
-                                                        <td className="td">{user.lastName},<br></br>{user.firstName}</td>
-                                                        <td className="td">{user.squadron}</td>
-                                                        <td className="td">{user.nofearProgress}</td>
-                                                        <td className="td">{user.recordsProgress}</td>
-                                                        <td className="td">{user.stinfoProgress}</td>
-                                                    </tr>
-                                                ))}
-                                            </tbody>
-                                        </table>
+                        {userData.admin && (
+                            <div className="main-content">
+                                <div className="container">
+                                    <h2 className="table-name">All User's Data</h2>
+                                    <div className="search-bar">
+                                        <input
+                                            type="text"
+                                            placeholder="Search Name"
+                                            className="input"
+                                            value={nameSearch}
+                                            onChange={(e) => setNameSearch(e.target.value)}
+                                        />
+                                        <input
+                                            type="text"
+                                            placeholder="Search Squadron"
+                                            className="input"
+                                            value={squadronSearch}
+                                            onChange={(e) => setSquadronSearch(e.target.value)}
+                                        />
+                                        <button onClick={handleSearch}>
+                                            Search
+                                        </button>
+                                        <button onClick={handleClearSearch}>
+                                            Clear
+                                        </button>
                                     </div>
-                                </div>
-                            ) : (
-                                <div className="main-content">
-                                    <div className="container">
-                                        <h2 style={{ textAlign: 'center' }}>Personal Data</h2>
-                                        <table>
-                                            <thead>
-                                                <tr>
-                                                    <th>No Fear Act Completion Progress</th>
-                                                    <th>Records Management Completion Progress</th>
-                                                    <th>STINFO Completion Progress</th>
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th className="th">Name</th>
+                                                <th className="th">Squadron</th>
+                                                <th className="th">No Fear Act Progress %</th>
+                                                <th className="th">Records Management Progress %</th>
+                                                <th className="th">STINFO Progress %</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {filteredUserData.map((user, index) => (
+                                                <tr key={index}>
+                                                    <td className="td">
+                                                        {user.lastName},<br />
+                                                        {user.firstName}
+                                                    </td>
+                                                    <td className="td">{user.squadron}</td>
+                                                    <td className="td">{user.nofearProgress}</td>
+                                                    <td className="td">{user.recordsProgress}</td>
+                                                    <td className="td">{user.stinfoProgress}</td>
                                                 </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>{userData.nofearProgress}</td>
-                                                    <td>{userData.recordsProgress}</td>
-                                                    <td>{userData.stinfoProgress}</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
+                                            ))}
+                                        </tbody>
+                                    </table>
                                 </div>
-                            )}
-                        </div>
+                            </div>
+                        )}
                     </>
                 ) : (
                     <div className="text">
                         <h1>Dashboard</h1>
-                        <h2>Please log in to view dashboard</h2>
+                        <h2>{errorMessage}</h2>
                     </div>
                 )}
             </div>
         </>
-    );    
+    );
 }
+
 export default Dashboard;

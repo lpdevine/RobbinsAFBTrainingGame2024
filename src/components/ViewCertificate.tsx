@@ -13,11 +13,10 @@ interface ViewCertificateProps {
     userEmail: string;
 }
 const ViewCertificate: React.FC<ViewCertificateProps> = ({ firstName, lastName, courseName, completionDate, userEmail }) => {
-
     return (
         <div>
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%', height: '100vh' }}>
-                <PDFViewer style={{ width: '1000px', height: '600px' }}>
+                <PDFViewer style={{ width: '1000px', height: '1000px' }}>
                     <Certificate
                         firstName={firstName}
                         lastName={lastName}
@@ -25,7 +24,6 @@ const ViewCertificate: React.FC<ViewCertificateProps> = ({ firstName, lastName, 
                         completionDate={completionDate}
                         userEmail={userEmail}
                     />
-
                 </PDFViewer>
             </div>
         </div>
