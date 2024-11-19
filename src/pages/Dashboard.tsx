@@ -101,7 +101,7 @@ function Dashboard(): JSX.Element {
                             <h1>Dashboard</h1>
                             <h2>Welcome, {userData.firstName}</h2>
                         </div>
-                        {userData.admin && (
+                        {userData.admin ? (
                             <div className="main-content">
                                 <div className="container">
                                     <h2 className="table-name">All User's Data</h2>
@@ -154,7 +154,29 @@ function Dashboard(): JSX.Element {
                                     </table>
                                 </div>
                             </div>
-                        )}
+                        ) : (
+                            <div className="main-content">
+                                    <div className="container">
+                                        <h2 className="table-name">Personal Data</h2>
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th className="th">No Fear Act Completion Progress</th>
+                                                    <th className="th">Records Management Completion Progress</th>
+                                                    <th className="th">STINFO Completion Progress</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td className="td">{userData.nofearProgress}</td>
+                                                    <td className="td">{userData.recordsProgress}</td>
+                                                    <td className="td">{userData.stinfoProgress}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            )}
                     </>
                 ) : (
                     <div className="text">
