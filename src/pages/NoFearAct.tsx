@@ -51,7 +51,7 @@ function NoFearAct() {
         const data = await GetUserData(uid);
 
         // Update progress and completion time for No Fear Act
-        data["nofearactProgress"] = 100;
+        data["nofearProgress"] = 100;
         data["nofearactCompletionTime"] = Timestamp.now();
 
         setCompleted(true);
