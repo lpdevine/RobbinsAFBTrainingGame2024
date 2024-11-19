@@ -20,6 +20,8 @@ const styles = StyleSheet.create({
   },
   section: {
     flexGrow: 1,
+    padding: 20,
+    border: '2pt solid #000',
   },
   header: {
     textAlign: 'center',
