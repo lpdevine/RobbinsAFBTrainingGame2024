@@ -1,4 +1,4 @@
-# Records-Management
+# No FEAR Act
 Updated Memory Matching Capstone Game 
 
 #### Table of Contents
@@ -10,7 +10,7 @@ Updated Memory Matching Capstone Game
 
 
 ## Overview 
-The Records Management Matching Game is an interactive educational tool designed to help users learn and reinforce records management concepts. Players flip cards to match records management terms with their correct definitions/examples. The game is designed to provide feedback when a match is correct or incorrect and includes features such as a countdown timer, limited attempts, and restart functionality. This repository is the improvement of the already made matching game by a team from the previous semester. 
+The No FEAR Act Matching Game is an interactive educational tool designed to help users learn and reinforce No FEAR Act concepts. Players flip cards to match No FEAR Act terms with their correct definitions/examples. The game is designed to provide feedback when a match is correct or incorrect and includes features such as a countdown timer, limited attempts, and restart functionality. This repository is the improvement of the already made matching game by a team from the previous semester. 
 
 ## Features
 - Interactive Card Matching: Players flip cards to match terms with their correct definitions.
