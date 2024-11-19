@@ -21,7 +21,11 @@ const styles = StyleSheet.create({
   section: {
     flexGrow: 1,
     padding: 20,
-    border: '2pt solid #000',
+    borderWidth: 10,
+    borderColor: '#007BFF', 
+    borderStyle: 'solid', 
+    borderRadius: 15, 
+    boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)',
   },
   header: {
     textAlign: 'center',
