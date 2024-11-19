@@ -191,22 +191,85 @@ input {
 
 /* Unity game styling */
 .UnityGame {
-    width: 100%; /* Makes the game fill the container's width */
-    max-width: 1200px; /* Set a max width if you want to limit it */
-    height: 800px; /* Adjust height as needed for visibility */
-    padding: 10px;
-    margin: 20px auto; /* Center the game within the container */
+    width: calc(100% - 300px); /* Dynamically adjusts width to fit the space */
+    max-width: 100%; /* Prevents the game from exceeding the screen width */
+    height: 550px; /* Adjust height as needed */
+    margin-left: 280px; /* Aligns the game with the right edge of the navbar */
+    background-color: #f0f0f0; /* Optional background for visibility */
+    border-radius: 8px; /* Optional rounded corners */
     display: block;
+    overflow: hidden; /* Ensures no overflow if content is too large */
 }
+
+
+
+.unity-wrapper {
+    position: fixed; /* Ensures the Unity game stays positioned relative to the viewport */
+    left: 250px; /* Set the left edge to match the right edge of the navbar (250px navbar width) */
+    width: calc(100% - 250px); /* Occupy all space to the right of the navbar */
+    height: 100%; /* Full height of the screen */
+    display: flex;
+    justify-content: center; /* Horizontally center the Unity game */
+    align-items: center; /* Vertically center the Unity game */
+    box-sizing: border-box; /* Include padding in the width calculation */
+}
+
+
+
 .form-input, .form-select {
-    width: 100%;
-    padding: 10px;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    width: 90%; /* Reduce width for a more compact look */
+    padding: 8px; /* Smaller padding for a more compact input field */
+    margin-top: 8px; /* Adjust margin to reduce spacing between fields */
+    margin-bottom: 8px;
     border: 1px solid #ddd;
     border-radius: 4px;
-    font-size: 1em;
+    font-size: 0.9em; /* Slightly smaller font size */
     background-color: white;
     color: black;
+}
+
+
+
+.form-submit-button {
+    width: 90%;
+    padding: 8px;
+    font-size: 0.9em;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+.form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Ensures labels are left-aligned */
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 8px;
+}
+.dashboard-container {
+    position: relative;
+    margin-left: 250px; /* Adjust for the sidebar */
+    width: calc(100% - 250px);
+    padding: 20px;
+}
+
+.top-left-image {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 50px; /* Adjust size as needed */
+    height: auto;
+}
+
+.top-right-image {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 50px; /* Adjust size as needed */
+    height: auto;
+}
+
+.center-content {
+    text-align: center;
+    margin-top: 60px; /* Adds space below the images */
 }
 
