@@ -193,7 +193,7 @@ input {
 .UnityGame {
     width: calc(100% - 300px); /* Dynamically adjusts width to fit the space */
     max-width: 100%; /* Prevents the game from exceeding the screen width */
-    height: 550px; /* Adjust height as needed */
+    height: 650px; /* Adjust height as needed */
     margin-left: 280px; /* Aligns the game with the right edge of the navbar */
     background-color: #f0f0f0; /* Optional background for visibility */
     border-radius: 8px; /* Optional rounded corners */
