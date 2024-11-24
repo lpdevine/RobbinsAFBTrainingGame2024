@@ -105,6 +105,13 @@ public class DictionaryScene4 : MonoBehaviour
         // Determine if the text is already showing or not
         bool showText = textComponent.text == "";
 
+        // Prevent flipping back the first card unless both cards are selected
+        if (!showText && flippedButtons[1] == null)
+        {
+            Debug.Log("You must select another card before flipping this one back.");
+            return; // Exit if trying to flip the first card back prematurely
+        }
+
         // Start the flip animation with a callback to handle flipping logic after animation
         StartCoroutine(FlipCard(button, showText, () =>
         {
