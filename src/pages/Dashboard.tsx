@@ -132,6 +132,7 @@ function Dashboard(): JSX.Element {
                                             <tr>
                                                 <th className="th">Name</th>
                                                 <th className="th">Squadron</th>
+                                                <th className="th">Admin</th>
                                                 <th className="th">No Fear Act Progress %</th>
                                                 <th className="th">Records Management Progress %</th>
                                                 <th className="th">STINFO Progress %</th>
@@ -145,6 +146,7 @@ function Dashboard(): JSX.Element {
                                                         {user.firstName}
                                                     </td>
                                                     <td className="td">{user.squadron}</td>
+                                                    <td className="td">{user.admin ? "Yes" : "No"}</td>
                                                     <td className="td">{user.nofearProgress}</td>
                                                     <td className="td">{user.recordsProgress}</td>
                                                     <td className="td">{user.stinfoProgress}</td>

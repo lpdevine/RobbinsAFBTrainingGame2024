@@ -49,3 +49,64 @@ table {
     background-color: rgb(255, 199, 44);
     color: #000000;
 }
+/* Fullscreen overlay to darken background */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensure it overlays other elements */
+}
+
+/* White box for the popup content */
+.popup-content {
+    background-color: #fff; /* White background */
+    border-radius: 8px; /* Rounded corners */
+    padding: 20px; /* Add some padding inside the box */
+    width: 300px; /* Fixed width */
+    text-align: center; /* Center align the content */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for a raised effect */
+}
+
+/* Buttons container for proper spacing */
+.popup-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px; /* Add spacing above buttons */
+}
+
+/* Confirm button */
+.popup-confirm {
+    background-color: #4caf50; /* Green */
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+/* Cancel button */
+.popup-cancel {
+    background-color: #f44336; /* Red */
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+/* Add hover effects for buttons */
+.popup-confirm:hover {
+    background-color: #45a049;
+}
+
+.popup-cancel:hover {
+    background-color: #e53935;
+}
