@@ -51,7 +51,7 @@ public class DictionaryScene5 : MonoBehaviour
     {
         termsDefinitions.Add("Prohibited personnel practice", "Inappropriate recommendations");
         termsDefinitions.Add("If you have been subjected to discrimination", "File an Equal Employment Opportunity complaint");
-        termsDefinitions.Add("Illegal treatment of federal employess of different categories", "Discrimination");
+        termsDefinitions.Add("Illegal treatment of federal employees of different categories", "Discrimination");
         termsDefinitions.Add("Person who exposes illegal activity", "Whistleblower");
 
 

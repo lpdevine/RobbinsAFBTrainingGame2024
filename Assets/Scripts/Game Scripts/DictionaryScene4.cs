@@ -48,7 +48,7 @@ public class DictionaryScene4 : MonoBehaviour
     private void PrepareTermsAndDefinitions()
     {
 
-        termsDefinitions.Add("A prohibited personnel practice", "Coercing politicy activity");
+        termsDefinitions.Add("A prohibited personnel practice", "Coercing political activity");
         termsDefinitions.Add("Age Discrimination in Employment Act", "Protects people 40+ years old");
         termsDefinitions.Add("Violation of Civil Service Reform Act", "Retaliating against whistleblowers");
         termsDefinitions.Add("No FEAR Act", "Notification and Federal Employee Antidiscrimination and Retaliation Act");
